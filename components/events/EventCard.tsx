@@ -1,0 +1,9 @@
+import { StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { TouchFeedback } from '../TouchFeedback';
+import { colors } from '../../constants/theme';
+import { upcomingEvents } from '../../constants/events';
+export function EventCard({ event, onParticipate }: { event: typeof upcomingEvents[number]; onParticipate: () => void }) {
+  return <View style={styles.card}><View style={styles.row}><View style={styles.icon}><Ionicons name="shield-checkmark-outline" size={18} color={colors.pink} /></View><View style={styles.body}><Text style={styles.title}>{event.title}</Text><Text style={styles.description}>{event.description}</Text><Text style={styles.date}>{event.date}</Text></View></View><TouchFeedback label={`Participar: ${event.title}`} onPress={onParticipate} style={styles.button}><Text style={styles.action}>Participar</Text></TouchFeedback></View>;
+}
+const styles = StyleSheet.create({ card: { backgroundColor: colors.white, borderRadius: 20, padding: 10, shadowColor: '#30232C', shadowOpacity: .10, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 3 }, row: { flexDirection: 'row', gap: 8 }, icon: { width: 23, height: 23, borderRadius: 12, backgroundColor: colors.icon, alignItems: 'center', justifyContent: 'center', marginTop: 2 }, body: { flex: 1 }, title: { fontSize: 14, fontWeight: '700', color: colors.achievement, lineHeight: 19 }, description: { fontSize: 11, color: colors.wine, marginTop: 3, lineHeight: 15 }, date: { fontSize: 11, color: '#727C88', marginTop: 2 }, button: { alignSelf: 'flex-end', backgroundColor: colors.white, borderRadius: 7, marginTop: 6, minHeight: 32, paddingHorizontal: 16, shadowColor: '#30232C', shadowOpacity: .16, shadowRadius: 3, shadowOffset: { width: 0, height: 1 }, elevation: 2 }, action: { color: colors.achievement, fontSize: 12, fontWeight: '700' } });

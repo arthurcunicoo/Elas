@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Elas",
+    "slug": "elas-na-cidade",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "elas",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-router"
+    ],
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
