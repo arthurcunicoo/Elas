@@ -1,0 +1,26 @@
+import { MapRegion, Place } from "../../constants/places";
+import { Coordinate } from "../../features/map/LocationProvider";
+import { Report, ReportMapNode } from "../../services/reports";
+export type CityMapProps = {
+  onLoadStateChange?: (state: "loading" | "ready" | "error") => void;
+  places: Place[];
+  categoryFiltered?: boolean;
+  selected: Place | null;
+  onSelect: (place: Place) => void;
+  onSelectGroup: (places: Place[]) => void;
+  onClear: () => void;
+  reportNodes: ReportMapNode[];
+  areaName: string;
+  homeRegion: MapRegion;
+  onOpenReportGroup: (node: ReportMapNode) => void;
+  selectedReport: Report | null;
+  onSelectReport: (report: Report) => void;
+  locationEnabled: boolean;
+  userLocation: Coordinate | null;
+  onLocation: (point: Coordinate) => void;
+  region: MapRegion;
+  bottomInset: number;
+  topInset: number;
+  locationRequest: number;
+  onRegionChange: (region: MapRegion) => void;
+};

@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+import { performance } from 'node:perf_hooks';
+const require=createRequire(import.meta.url),decode=require('decode-uri-component'),qs=require('query-string');
+const source=fs.readFileSync('vendor/decode-uri-component/upstream.js','utf8'),adapted=fs.readFileSync('vendor/decode-uri-component/index.js','utf8');
+assert.equal(adapted,source.replace('export default function','module.exports = function'));
+assert.equal(typeof decode,'function');
+for(const value of ['a%20b','%C3%A1','%F0%9F%98%80','100%25','%E0%A4%A','%FF%FE','%C2','%'])assert.equal(typeof decode(value),'string');
+assert.equal(qs.parse('name=Pra%C3%A7a&plus=a%2Bb').name,'Praça');assert.equal(qs.parse('plus=a%2Bb').plus,'a+b');
+const malformed='%E0%A4'.repeat(10000);const start=performance.now();assert.equal(typeof decode(malformed),'string');const duration=performance.now()-start;assert.ok(duration<2000,'decoder must finish a large malformed run without recursive blowup');
+const lock=JSON.parse(fs.readFileSync('package-lock.json'));
+assert.equal(lock.packages['node_modules/shell-quote'].version,'1.12.0');assert.equal(lock.packages['node_modules/source-map-js'].version,'1.2.2');
+assert.equal(lock.packages['node_modules/decode-uri-component'].resolved,'vendor/decode-uri-component');
+assert.ok(require.resolve('decode-uri-component').includes('/vendor/decode-uri-component/'),'must use patched project dependency, not runtime fallback');
+console.log(JSON.stringify({decoder:'upstream 0.5.1, CommonJS export adapter only',malformedBytes:malformed.length,elapsedMs:duration,queryStringCompatibility:true}));

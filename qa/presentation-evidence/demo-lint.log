@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 lint
+> eslint app components features hooks lib providers services constants
+
+
+/workspace/scratch/16bf12222e9b/demo-presentation/Elas/app/perfil.tsx
+  2:44  warning  'ui' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/16bf12222e9b/demo-presentation/Elas/components/map/PlaceReviewPreview.tsx
+  1:41  warning  'palette' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/MapScreen.tsx
+  197:5  warning  React Hook useCallback has a missing dependency: 'reports'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 3 problems (0 errors, 3 warnings)
+

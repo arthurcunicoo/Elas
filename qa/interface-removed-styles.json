@@ -1,0 +1,11 @@
+[
+  "app/eventos.tsx:events",
+  "app/eventos.tsx:placeholder",
+  "app/eventos.tsx:placeholderTitle",
+  "app/eventos.tsx:placeholderText",
+  "app/alertas.tsx:empty",
+  "app/alertas.tsx:emptyTitle",
+  "features/community/NotificationsList.tsx:empty",
+  "features/community/NotificationsList.tsx:emptyIcon",
+  "features/community/NotificationsList.tsx:emptyTitle"
+]

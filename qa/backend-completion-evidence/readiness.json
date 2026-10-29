@@ -1,0 +1,15 @@
+{
+  "kind": "configuration-only",
+  "productionChanges": false,
+  "requirements": {
+    "staging": false,
+    "threeQaAccounts": false,
+    "recoveryMailbox": false,
+    "sentry": false,
+    "expoProject": false,
+    "expoAccessToken": false,
+    "backup": false,
+    "disposableRestore": false
+  },
+  "notice": "Configuration presence is not proof of valid credentials, SMTP delivery, physical push or a completed restore."
+}

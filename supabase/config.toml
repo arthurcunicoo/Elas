@@ -1,0 +1,14 @@
+[functions.lugares-osm]
+verify_jwt = true
+
+[functions.catalog-refresh]
+# Machine-only endpoint with a 256-bit header secret, checked via a service-role-only RPC.
+verify_jwt = false
+
+[functions.push-delivery]
+# Own 256-bit machine authentication; the handler verifies the hash through a service-only RPC.
+verify_jwt = false
+
+[functions.account-erasure]
+# Validates the access token against Auth AND reauthenticates the password itself.
+verify_jwt = false

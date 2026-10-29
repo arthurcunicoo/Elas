@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-27",
+  "timeZone": "America/Sao_Paulo",
+  "baseSha256": "0f95e4bf9bf191f2edc0d7589aa2b7a7552657f34ed498774b50a7436ddc1e93",
+  "local": {
+    "backendVersion": 12,
+    "canonicalMigrations": 25,
+    "minimumCoreAppBackend": 11,
+    "fullSuite": {
+      "command": "npm run verify",
+      "exitCode": 0,
+      "seconds": 119.39,
+      "log": "final-verify.log"
+    },
+    "edgeCheck": {
+      "status": "passed",
+      "deno": "2.9.6",
+      "functions": 4
+    },
+    "webExport": "passed",
+    "lintErrors": 0,
+    "preExistingLintWarnings": 3
+  },
+  "online": {
+    "productionModified": false,
+    "appliedMigrations": 20,
+    "backendVersion": 11,
+    "stagingBranches": 0,
+    "branchCreationAttempts": 2,
+    "branchCreationError": "Invalid or expired requestState",
+    "liveCatalogueRecovered": false,
+    "catalogueRows": 1535,
+    "catalogueTiles": 81,
+    "successfulTiles": 0,
+    "catalogueSourceHttpStatus": 406,
+    "pushEnabled": false,
+    "accountErasureEnabled": false,
+    "edgeMetrics24h": {
+      "requests": 144,
+      "failures5xx": 144,
+      "p95ms": 2180.55
+    }
+  },
+  "tasks": {
+    "migrations": "local-validated; remote staging unavailable; not applied",
+    "catalogue": "atomic implementation tested; live source and deployment pending",
+    "erasure": "prepared and tested; deployment/activation pending",
+    "roles": "implemented and tested; remote migration pending",
+    "operations": "real Edge logs checked; QA/mail/load/remote restore pending",
+    "push": "existing protocol tested; Expo credentials and physical delivery pending"
+  },
+  "limitations": [
+    "No live Auth/Storage staging suite or mailbox/deep-link validation.",
+    "No Android/iPhone push delivery or performance validation.",
+    "No load test or managed remote restore.",
+    "PGlite serializes local transactions; parallel intents are not independent connections.",
+    "No production migration, role change, deployment, deletion, e-mail or push."
+  ]
+}

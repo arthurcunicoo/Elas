@@ -1,0 +1,4 @@
+Check supabase/functions/lugares-osm/index.ts
+Check supabase/functions/catalog-refresh/index.ts
+Check supabase/functions/push-delivery/index.ts
+Check supabase/functions/account-erasure/index.ts

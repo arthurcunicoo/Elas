@@ -1,0 +1,330 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 verify
+> npm run typecheck && npm run lint && npm run test:db && npm run test:community && npm run test:cursor && npm run test:spatial && npm run test:showcase && npm run test:app && npm run test:architecture && npm run test:web-map && npm run test:stability && npm run test:map && npm run test:mobile && npm run test:state && npm run test:osm && npm run test:overture && npm run test:update && npm run test:cancellation && npm run test:performance && npm run test:operations && npm run test:restore && npm run test:growth && npm run test:audit && npm run test:loading && npm run test:modernization && npm run test:interface && npm run test:admin && npm run test:system
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 lint
+> eslint app components features hooks lib providers services constants
+
+
+/workspace/scratch/16bf12222e9b/demo-presentation/Elas/app/perfil.tsx
+  2:44  warning  'ui' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/16bf12222e9b/demo-presentation/Elas/components/map/PlaceReviewPreview.tsx
+  1:41  warning  'palette' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/MapScreen.tsx
+  197:5  warning  React Hook useCallback has a missing dependency: 'reports'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 3 problems (0 errors, 3 warnings)
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:db
+> node tests/backend.mjs
+
+121 database checks passed (PGlite with simulated Auth and Storage roles).
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:community
+> node tests/community-db.mjs && node tests/production-flows.mjs
+
+Product scope checks passed: private/personal/public counters, independent city totals, bounded rows, no pending author leaks, public-only report feed, private own records, neutral poll projections in cursor and legacy APIs, vote/change/end lifecycle and no direct aggregate bypass.
+Community database checks passed: auth bounds, pending/approved/edited/rejected/withdrawn/expired/revised lifecycle, 5-person threshold, hidden comments/authors, moderation preserves experience date, live aggregates and one RLS-consistent impact snapshot.
+(node:115) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/reportClusters.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Production flow checks passed: bounded real summary contracts, thresholds, no release samples, explicit demo config, schema/network/account separation, immediate presses, short reveal once, real distribution UI, participation choice and native report zoom/marker refresh.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:cursor
+> node tests/cursor-db.mjs && node tests/cursor-ui.mjs
+
+Cursor database checks passed: all 18 list routes, tied timestamps/microseconds, insertion/deleted boundary between pages, no skipped/repeated IDs, refresh, account/filter binding, RLS/staff/owner/history/vote privacy, filters, lookahead and indexed tuple seek.
+Cursor UI checks passed: exact retry cursor, double tap lock, deduplication, refresh/account/filter races, debounce, disabled search, malformed payload rejection and microsecond preservation.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:spatial
+> node tests/spatial-db.mjs && node tests/spatial-ui.mjs && node tests/catalog-worker.mjs && node tests/atomic-ingestion.mjs
+
+Spatial DB checks passed: 831 visible reports without truncation, 431 coincident records with complete keyset drill-down, clustering/refinement/RLS, generated geography and GiST index eligibility and private scoped projection, 1403-to-500 SQL selection, typo/accent/literal search and GIN plan, admin permissions, configurable second city, machine-only leased queue, subdivision/backoff and bounded import candidates.
+(node:181) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/region.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Spatial UI checks passed: 2000 padded-geometry samples, same-bucket reuse and zoom separation, shared web/native symbol and actions, coincident group drill-down, selected pin dedupe, stale/account response isolation and retry. Native hosts do not measure real device layout.
+(node:189) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/catalog-refresh/worker.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"operation":"catalog_ingestion","area":"florianopolis","phase":"commit","status":"committed","created":1,"updated":0,"unchanged":0,"manualPreserved":0,"received":1,"rejected":0,"discarded":0}
+{"event":"overpass_request_failed","endpoint":"https://overpass-api.de/api/interpreter","code":"http_error","status":429,"failureName":"UpstreamError"}
+{"operation":"catalog_ingestion","area":"florianopolis","phase":"collect","status":"failed","code":"source_http_429"}
+{"operation":"catalog_ingestion","area":"florianopolis","phase":"commit","status":"committed","created":1,"updated":0,"unchanged":0,"manualPreserved":0,"received":1,"rejected":0,"discarded":0}
+{"operation":"catalog_ingestion","area":"florianopolis","phase":"commit","status":"rejected","code":"commit_rejected"}
+Catalog worker passed: machine authentication, immutable batch/lease commit, no separate success ACK, bounded lost-ACK replay, quota preservation and definite database failure. Source transport is simulated.
+(node:201) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/catalog-refresh/ingestion.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"scope":"Isolated real PostgreSQL/PGlite and production parsers; source/transport/clock/ACK failures injected; not staging or device/load evidence","events":[{"test":"atomic-success-and-replay","created":1,"updated":0,"received":5,"rejected":2,"discarded":1,"unchanged":1,"manualPreserved":1,"parallelIntents":4,"receiptRows":1,"note":"PGlite serializes transactions; not independent connection load."},{"test":"replaced-or-expired-lease-cannot-write","passed":true},{"test":"invalid-second-row-rolls-back-first-row-and-provenance","passed":true},{"test":"queue-ACK-failure-rolls-back-catalog-and-receipt","passed":true},{"operation":"catalog_ingestion","area":"criciuma","phase":"commit","status":"failed","code":"commit_failed"},{"test":"lost-network-ACK-recovers-through-identical-receipt","passed":true},{"test":"one-lost-ACK-replayed-in-handler-without-duplicate-write","passed":true},{"operation":"catalog_ingestion","area":"criciuma","phase":"commit","status":"rejected","code":"commit_rejected"},{"test":"definite-database-rejection-is-distinct-from-lost-ACK","passed":true},{"test":"stale-snapshot-integrity-license-and-timezone-guards","passed":true},{"test":"older-snapshot-cannot-overwrite-dated-legacy-row-without-new-provenance","passed":true},{"operation":"catalog_ingestion","area":"criciuma","phase":"collect","status":"failed","code":"source_http_406"},{"operation":"catalog_ingestion","area":"criciuma","phase":"commit","status":"committed","created":0,"updated":0,"received":5,"rejected":2,"discarded":1,"unchanged":2,"manualPreserved":1},{"test":"406-outage-preserves-data-and-reviewed-snapshot-replays-without-duplicates","passed":true,"source":"fixture snapshot, not live Overpass"},{"test":"receipt-retention-removes-at-most-100-expired-items-per-commit","passed":true},{"test":"machine-only-API-and-no-direct-receipt-grants","passed":true},{"test":"rollback-removes-API-and-preserves-imported-data","passed":true}],"passed":true}
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:showcase
+> node tests/showcase.mjs && node tests/showcase-ui.mjs && node tests/presentation.mjs
+
+Showcase DB checks passed: 56 explicit samples, idempotence, future fictional agenda, 5 review destinations, balanced impact stages, auth-only reads, hidden rows and blocked client writes.
+Showcase flow checks passed: place/account request races, explicit labels, signed-out cleanup, blocked fictional registrations, real RPC unchanged, real impacts replace examples without changing counters.
+(node:246) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/presentation/content.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Presentation checks passed: production opt-out, explicit presentation mode, hidden poll examples until vote/end, local-only simulated votes, immutable real totals and clearly fictional pending reports.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:app
+> node tests/app-flows.mjs && node tests/product-flows.mjs
+
+(node:267) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/eventPresentation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+App flow checks passed: neutral poll UI/results/receipt/failure/change/end/demo, one sheet per task, place selection/back, inline validation/focus, draft preservation, routed-place loading, one send per double tap, complete request payload, retry, success tracking, isolated demo events and real action, confirm/cancel, shared field refs/errors/password/focus, disabled/busy actions, accessible page header, São Paulo event dates.
+Product UI checks passed: stale/account/sign-out isolation, personal/city counters and cards, separate history routes, canonical notification inbox and explicit pending-report privacy. Native layout is not simulated.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:architecture
+> node tests/architecture-flows.mjs
+
+Architecture checks passed: review ownership/pagination/errors, lazy factor query, safe review writes, isolated password verification/recovery, retained sheet exit, interrupted reopen and reduced motion.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:web-map
+> node tests/web-map.mjs
+
+(node:317) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/web/geometry.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Web map passed: 1100 Mercator round trips, polar bounds, visible-only tiles, wrapped XYZ, provider validation/no release fallback/zoom limits, real tile load/error/pan lifecycle and provider/data attribution. Native hosts do not measure browser pixels.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:stability
+> node tests/map-stability.mjs
+
+(node:338) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/constants/places.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Mounted map regression passed: selection settles after 1 requests, 20 load/layout cycles stay stable, background indicator absent, real pan and category changes still work.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:map
+> node tests/map-categories.mjs && node tests/map-relevance.mjs
+
+(node:359) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/constants/placeCategories.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+27 map checks passed: OSM category mapping, fallback, filtering, clustering, selected place visibility and distance sorting.
+(node:367) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/constants/placeRelevance.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Map relevance checks passed: major destinations, progressive reveal, overlap priority, filter visibility, pinned selection and stable ordering. SQL shortlist is tested with the real database extensions.
+Closer-zoom regression checks passed: intermediate zoom, street detail, tablet eligibility, filtered density and selected-place persistence.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:mobile
+> node tests/mobile-ui.mjs
+
+(node:388) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/viewport.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Mobile checks passed: selected pin outside panels, short viewport bounds and notification timestamps.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:state
+> node tests/state.mjs
+
+(node:409) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/errors.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+State checks passed: bounded cache, account epochs, original achievement boundaries, padded narrow map geometry, catalogue-list scope and Criciúma dates.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:osm
+> node tests/osm.mjs && node tests/osm-network.mjs
+
+(node:430) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/lugares-osm/catalog.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+OSM checks passed: generic bounded geometry, typed IDs, parsing, conservative reconciliation, database-only compatibility endpoint, authentication, error/CORS and bounded transport validation.
+(node:438) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/lugares-osm/network.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"overpass_request_failed","endpoint":"https://overpass-api.de/api/interpreter","code":"http_error","status":503,"failureName":"UpstreamError"}
+{"event":"overpass_request_failed","endpoint":"https://overpass-api.de/api/interpreter","code":"http_error","status":429,"failureName":"UpstreamError"}
+{"event":"overpass_request_failed","endpoint":"https://overpass-api.de/api/interpreter","code":"http_error","status":406,"failureName":"UpstreamError"}
+{"event":"overpass_request_failed","endpoint":"https://overpass-api.de/api/interpreter","code":"incomplete_response","status":null,"failureName":"UpstreamError"}
+{"event":"overpass_request_failed","endpoint":"https://overpass-api.de/api/interpreter","code":"network_or_timeout","status":null,"failureName":"TypeError"}
+OSM network checks passed: encoded QL POST, fallback, quota handling, incomplete responses, stream limits and UTF-8. Transport responses are simulated.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:overture
+> node tests/overture.mjs
+
+Overture checks passed: GERS uniqueness, category taxonomy, conservative matching, branches, ambiguous overlaps, low confidence, closures and residential filtering.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:update
+> node tests/update-script.mjs
+
+Atomic update script passed: late failure rolls everything back; two successful runs preserve 20 history entries, existing reviews/places and private avatar bucket. Auth/Storage schemas are simulated.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:cancellation
+> node tests/request-cancellation.mjs
+
+(node:505) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/request.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Cancellation passed with the real Supabase SDK and fetch boundary: map/search/detail/summary/page reads, chained hydration, shared consumer ownership, last-consumer abort, fresh retry, provider cleanup and one-trip events.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:performance
+> node tests/map-performance.mjs
+
+(node:526) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/map/cache.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Map performance checks passed: quantized padded identity, request sharing/TTL/eviction/retry/account isolation, stable markers, 1000 gesture events coalesced into one frame and database-only catalog reads.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:operations
+> node tests/operations.mjs && node tests/qa-environment.mjs && node tests/browser-fixture.mjs
+
+(node:547) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/monitoring/network.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Operational tooling passed: HTTP outcomes/timing, cancellation vs timeout, safe Edge correlation/error logging, PNG regression/missing baseline guards, staging isolation, device-setting cleanup, release evidence gate, backup integrity/production restore block, Maestro YAML and build profiles. No physical-device test is claimed.
+QA environment checks passed: executable/file/PATH detection, Windows PATHEXT, no CLI execution or telemetry side effect, and credentials reduced to configuration booleans.
+Browser fixture HTTP checks passed: real production TypeScript compiled, local raw-storage boundary, module routes and private file rejection. This does not execute Chromium or prove E2E.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:restore
+> node tests/restore-drill.mjs
+
+Local restore drill passed: closed source, new restored database, all migrations/data/auth shim/Storage metadata, separate asset bytes, checksum rejection and preserved RLS. This is not a managed Supabase backup or production restore.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:growth
+> node tests/operational-growth.mjs && node tests/push-client.mjs
+
+(node:613) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/push-delivery/worker.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Database growth checks passed: bounded retention/audit hold, replay after cleanup/edits, author isolation, revision and ABA conflicts, role checks, opt-in ownership, machine leases/receipts, invalid tokens, opt-out and push retention.
+Push protocol checks passed: machine authentication, real Expo request format, ticket/receipt separation, 429 retry, permanent failures, invalid/missing receipts, serialized revoke and safe inbox payload. No physical push delivery is claimed.
+(node:625) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/push.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Push client flows passed: explicit consent, denied permission, silent token rotation, revocation before logout, failed revocation, registration/logout race, account switch, safe tap deduplication/listener cleanup and web fallback. Native APIs are mocked; receipt on a phone is pending.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:audit
+> node tests/audit-regressions.mjs
+
+(node:646) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/monitoring/network.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Audit regressions passed: Request cancellation/telemetry, isolated recovery HTTP middleware, iOS backend/build/font/OS verification and rejection of production or missing metadata. No device execution is claimed.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:loading
+> node tests/loading-motion.mjs
+
+Loading motion: lifecycle, stable loop, native/web driver, reduced motion, responsive art and accessibility passed.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:modernization
+> node tests/modernization.mjs
+
+(node:688) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/community/dates.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"test":"100 sequential text edits followed by debounce flush","baselineStorageWrites":100,"currentStorageWrites":1,"environment":"React test renderer, simulated AsyncStorage/timers; not device latency"}
+Modernization: drafts/debounce/background/unmount/restore/idempotency/clear/account isolation/future dates, IANA/DST dates and offline service-area retention passed.
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+Draft navigation waits for durable save and exposes explicit discard after failure.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:interface
+> node tests/interface.mjs
+
+Interface checks passed: loading/empty/network/server/permission/session states, safe copy, retry/clear, keyboard focus, disabled actions, reduced motion, font 160%, password geometry, filter scope and independent/global clearing. Native hosts do not prove device layout or screen-reader behavior.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:admin
+> node tests/admin-access.mjs && node tests/admin-roles-db.mjs
+
+(node:730) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/auth/authorization.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Administration access passed: real menu/route guards, default-deny malformed roles, signed-out/demo exclusion and deep-link readiness. Native navigation remains a device/staging check.
+Admin roles passed: explicit authorization, audit, optimistic conflict, conditional last-admin counter, raw/Auth/erasure guards, self-demotion, bounded keyset, scope isolation and erasure anonymization. Concurrent intents are serialized locally, not independent connection proof.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:system
+> node tests/system-security.mjs && node tests/system-dependencies.mjs && node tests/system-database.mjs && node tests/report-submission.mjs && node tests/storage-concurrency.mjs && node tests/erasure-admin.mjs
+
+(node:763) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/storage/protectedStore.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+System security passed: real WebCrypto GCM/AAD/nonce, encrypted legacy migration/failure/large sessions/serialization/key loss, public-only offline cache TTL/account scope, selected-city timezone and erasure Auth/password/target/lease/Storage failure ordering. Native keychain and real Auth/Storage still require staging/devices.
+{"decoder":"upstream 0.5.1, CommonJS export adapter only","malformedBytes":60000,"elapsedMs":12.963388000000009,"queryStringCompatibility":true}
+(node:783) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/catalog-refresh/worker.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"operation":"catalog_ingestion","area":"criciuma","phase":"commit","status":"committed","created":1,"updated":1,"received":5,"rejected":2,"discarded":1,"unchanged":0,"manualPreserved":0}
+Controlled isolated catalog import: {"received":5,"created":1,"updated":1,"discarded":1,"rejected":2} (fixture HTTP payload, real parser/reconciler/PostgreSQL; not a live Overpass import)
+Two moderation intents with one expected revision: one committed, one rejected, one audit row (serialized local PostgreSQL transactions; not multi-connection load).
+Erasure migration rollback passed; completed erasure data is intentionally not restored.
+System database passed: service-only erasure, concurrent lease, restrictive existing-policy composition, Storage write block, atomic Auth cascade/anonymized receipt, preserved second account, original cursor RPC behavior and stale uid rejection. Auth/Storage transports are not real staging.
+(node:795) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/features/reports/reportSubmission.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Report submission passed: contextual validation, login required, duplicate-tap lock, retry/idempotency, retained content on error, success cleanup, coarse location opt-in and no cleanup after leaving.
+(node:803) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/storage/protectedStore.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Protected storage concurrency passed: independent realms, actual WebCrypto GCM, one key per entry, write/delete serialization, failed migration recovery, account separation, real adapter lock wiring, unsupported-browser fail-closed and SSR. Lock broker is simulated; this is not a browser E2E.
+(node:815) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/supabase/functions/account-erasure/worker.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Erasure/admin operations passed: last-admin refusal precedes irreversible steps; real QA runner blocks production/duplicate accounts before network; readiness contains no credential values. No mailbox/device evidence is claimed.

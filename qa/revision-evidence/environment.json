@@ -1,0 +1,19 @@
+{
+  "node": "24.22.1",
+  "platform": "linux",
+  "tools": {
+    "adb": false,
+    "maestro": false,
+    "k6": true,
+    "psql": false,
+    "supabase": false,
+    "xcrun": false
+  },
+  "configured": {
+    "staging": false,
+    "qaAccount": false,
+    "sentry": false,
+    "eas": false
+  },
+  "note": "k6 temporarily provisioned for the isolated protocol test; no native SDK/device present"
+}

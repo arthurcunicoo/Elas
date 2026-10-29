@@ -1,0 +1,43 @@
+{
+  "functions": [
+    {
+      "id": "20fe49cc-ae17-4880-968a-d3aff0380586",
+      "slug": "lugares-osm",
+      "name": "lugares-osm",
+      "status": "ACTIVE",
+      "version": 15,
+      "created_at": 1790877947943,
+      "updated_at": 1792679811117,
+      "verify_jwt": true,
+      "import_map": false,
+      "entrypoint_path": "file:///tmp/user_fn_pxcbzjxgxdmdayqwpqcj_20fe49cc-ae17-4880-968a-d3aff0380586_15/source/lugares-osm/index.ts",
+      "ezbr_sha256": "844bca806cb1b7fcaaa4ee06b25233c284929563d366fcc343d2ee7d3e637d27"
+    },
+    {
+      "id": "eb4a3b85-3d0d-4f92-9b59-41b40f7f4f3f",
+      "slug": "catalog-refresh",
+      "name": "catalog-refresh",
+      "status": "ACTIVE",
+      "version": 3,
+      "created_at": 1792506154191,
+      "updated_at": 1792679818528,
+      "verify_jwt": false,
+      "import_map": false,
+      "entrypoint_path": "file:///tmp/user_fn_pxcbzjxgxdmdayqwpqcj_eb4a3b85-3d0d-4f92-9b59-41b40f7f4f3f_3/source/catalog-refresh/index.ts",
+      "ezbr_sha256": "f49751215b8997521e3f405c64dde924ae7009255c87eabb9620d8026b909167"
+    },
+    {
+      "id": "91e212ec-84b1-4c03-ad53-fd73d96642dc",
+      "slug": "push-delivery",
+      "name": "push-delivery",
+      "status": "ACTIVE",
+      "version": 1,
+      "created_at": 1792687003894,
+      "updated_at": 1792687003894,
+      "verify_jwt": false,
+      "import_map": false,
+      "entrypoint_path": "file:///tmp/user_fn_pxcbzjxgxdmdayqwpqcj_91e212ec-84b1-4c03-ad53-fd73d96642dc_1/source/push-delivery/index.ts",
+      "ezbr_sha256": "eaeac5162cbb2d804c04a3e2e34de431e64c4b8201011b88ae84847eaf49d4e0"
+    }
+  ]
+}

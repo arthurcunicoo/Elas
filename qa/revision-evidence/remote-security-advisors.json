@@ -1,0 +1,113 @@
+{
+  "result": {
+    "lints": [
+      {
+        "name": "rls_enabled_no_policy",
+        "title": "RLS Enabled No Policy",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+        "count": 8,
+        "findings": [
+          {
+            "detail": "Table \\`private.envios\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "envios",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`private.papeis\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "papeis",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`private.publicacoes_historico\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "publicacoes_historico",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`private.push_config\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "push_config",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`private.push_dispositivos\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "push_dispositivos",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`private.push_fila\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "push_fila",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`private.retencao_envios\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "retencao_envios",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          },
+          {
+            "detail": "Table \\`public.catalogo_osm_cache\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "catalogo_osm_cache",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.664Z"
+          }
+        ]
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "title": "Leaked Password Protection Disabled",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Leaked password protection is currently disabled.",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+            "metadata": {
+              "type": "auth",
+              "entity": "Auth"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "baseVersion": 25,
+  "baseSha256": "edc5c6a1c41384a207fb527d89a31485d219afd8dce8bdeaf40aaee850c958ce",
+  "baseFilesPreserved": 434,
+  "changes": [
+    {
+      "path": "README.md",
+      "change": "modified",
+      "sha256": "a95dcc4b70ccc449d21c36c34807727b2f568cabf29a02cd3b5ee98a1eef1fc1"
+    },
+    {
+      "path": "REVISAO-E-TESTES-2026-10-25.md",
+      "change": "added",
+      "sha256": "3a177bd15a27309a6ce565913e0c6ef326881de1429c109a822106855de55e3f"
+    },
+    {
+      "path": "lib/storage/protectedStorage.web.ts",
+      "change": "modified",
+      "sha256": "c7b1057655b2bd94b7537195773b3b99a1f1a87a5438b6bd93584aaf4797970c"
+    },
+    {
+      "path": "lib/storage/protectedStore.ts",
+      "change": "modified",
+      "sha256": "27ea628341948dc910a1fb1d199758f5a74a5bd71844efb239c9a1c7b8de0643"
+    },
+    {
+      "path": "lib/storage/webStorageLock.ts",
+      "change": "added",
+      "sha256": "2aaa84d692b00d81c4707803bd47dccf44832f20e511f8511124e223227808f3"
+    },
+    {
+      "path": "package-lock.json",
+      "change": "modified",
+      "sha256": "b4930c7b41598279f8bd58a9c7a84832c774ad519b574868cf4ccb3ba2cf9b05"
+    },
+    {
+      "path": "package.json",
+      "change": "modified",
+      "sha256": "d2e6a2dc6d1a439ead9992478ad399445d9e08d1727ed081b50d06843cba2e2b"
+    },
+    {
+      "path": "qa/revision-evidence/audit.json",
+      "change": "added",
+      "sha256": "f163178be00d7dd07a98a5b29900d3960c43f3f382ef6601625fa7cf4891172b"
+    },
+    {
+      "path": "qa/revision-evidence/browser-fixture.txt",
+      "change": "added",
+      "sha256": "986280189ed502a804a0fbbb3958a23046f5d4ec7acac00d3c70f20537cdc192"
+    },
+    {
+      "path": "qa/revision-evidence/browser-status.json",
+      "change": "added",
+      "sha256": "5979ae0cda14b4122d40d3d0fb782090aa194aa4de54adfc0450ace148503ebb"
+    },
+    {
+      "path": "qa/revision-evidence/clean-install.txt",
+      "change": "added",
+      "sha256": "a1c1a443cfbfcbdddab62a258c50406f8c05d09f97af40051fb828a617aac13d"
+    },
+    {
+      "path": "qa/revision-evidence/concurrency-baseline.txt",
+      "change": "added",
+      "sha256": "5679176b00f77ebd190a95e344cfeae2e7a88a48f6cf7d0670bc2f35b80d776b"
+    },
+    {
+      "path": "qa/revision-evidence/concurrency-regression.json",
+      "change": "added",
+      "sha256": "2aa5952b86b10c39722e32736b7c61aaeaa855a187f2b48dd939721d7950daca"
+    },
+    {
+      "path": "qa/revision-evidence/concurrency.txt",
+      "change": "added",
+      "sha256": "b9d56119caf564f6cf1a3277e83ff724813791949981ec58c45c0deca286e531"
+    },
+    {
+      "path": "qa/revision-evidence/deno-runtime.json",
+      "change": "added",
+      "sha256": "9e82e89d1cb0a318a56d2b5c32243dd3a2a79d71febbb2054d995a56b504d41a"
+    },
+    {
+      "path": "qa/revision-evidence/edge-types.txt",
+      "change": "added",
+      "sha256": "397ba6f767e55fb4a53bd5bde1c0fb9c9eac9fd17f681aa1efe16378ed6124f7"
+    },
+    {
+      "path": "qa/revision-evidence/environment.json",
+      "change": "added",
+      "sha256": "57b71bc4f53beadff7344ab5cb567793173266382d721322749662d911c680dc"
+    },
+    {
+      "path": "qa/revision-evidence/export.txt",
+      "change": "added",
+      "sha256": "19e7beb8fa48089aab60622e3db72dbaa6b3af2b4cf948a10e9197593419c7d7"
+    },
+    {
+      "path": "qa/revision-evidence/k6-protocol.txt",
+      "change": "added",
+      "sha256": "eed2cd412fbf0d35a32a13b4401eef6bb58c6c40707a837e07722640c68953a5"
+    },
+    {
+      "path": "qa/revision-evidence/k6-summary.json",
+      "change": "added",
+      "sha256": "a028c847c164e808a068ec6d342007f828fb7613aa41c7035ebd576df01b8d2f"
+    },
+    {
+      "path": "qa/revision-evidence/lint.txt",
+      "change": "added",
+      "sha256": "513810e4d4f868a58272fd8c0c5848dcdf92a6082b40a4d5fdc85e8c9130ae4b"
+    },
+    {
+      "path": "qa/revision-evidence/live-api.json",
+      "change": "added",
+      "sha256": "8076b28506fd83a019cac0f1f8a102cdd89cc844e5d4cd9b2a4a2ec24b124ae3"
+    },
+    {
+      "path": "qa/revision-evidence/qa-environment-test.txt",
+      "change": "added",
+      "sha256": "1f79bf2c02d412475984dbed372ae80cba525df3b51b2fa6005bb5840972d42f"
+    },
+    {
+      "path": "qa/revision-evidence/release-gate.json",
+      "change": "added",
+      "sha256": "daf8ecec472983405c6610cbcaf8812fd2e0f22f2720da224691cae224ea0f1a"
+    },
+    {
+      "path": "qa/revision-evidence/remote-edge-functions.json",
+      "change": "added",
+      "sha256": "2b7ead651710619c2db52804280e5bdf540eb63c915e49eb0a38535d94974645"
+    },
+    {
+      "path": "qa/revision-evidence/remote-migrations.json",
+      "change": "added",
+      "sha256": "8d3febb6b9a2689b9f1795dcb9342f1f5ac6439288e4abd68a6e6d1b64c6eb70"
+    },
+    {
+      "path": "qa/revision-evidence/remote-performance-advisors.json",
+      "change": "added",
+      "sha256": "cdd75b243cd4dc59921d2e9218791ca355ae731c05bd2c8f93d99f65b716f660"
+    },
+    {
+      "path": "qa/revision-evidence/remote-review.json",
+      "change": "added",
+      "sha256": "440250e5953fb4b953a892a9212720f4710d871de4fd38847ff07507caad2a09"
+    },
+    {
+      "path": "qa/revision-evidence/remote-security-advisors.json",
+      "change": "added",
+      "sha256": "b9d5a30780a4b875f5087c794f63c71c2a4c4ec3a2d056ce7c0bfb3092db61a0"
+    },
+    {
+      "path": "qa/revision-evidence/typecheck.txt",
+      "change": "added",
+      "sha256": "a9c598a1416070b8b78b7e0a23a1ae9e30df2f7832835da08e433ddbba122ecf"
+    },
+    {
+      "path": "qa/revision-evidence/validation.json",
+      "change": "added",
+      "sha256": "92de44e0a388e7828f8f4e5dbf4eb3051561fac775e8b9270ec83fbfb5bc4e90"
+    },
+    {
+      "path": "qa/revision-evidence/verify.txt",
+      "change": "added",
+      "sha256": "4e80d6941f1254502758978a4900523528467b0fa19ece3e2c47704a082e4c66"
+    },
+    {
+      "path": "scripts/qa/browser-fixture.mjs",
+      "change": "added",
+      "sha256": "c921114e72d137063c71b88e478e351738b1486b9188f2c65e3f0906822e02da"
+    },
+    {
+      "path": "scripts/qa/doctor.mjs",
+      "change": "modified",
+      "sha256": "aa6f01e622445e1677913e6d036a7157bb0bc9fadd069da8b6447ff4beed353a"
+    },
+    {
+      "path": "tests/browser-fixture.mjs",
+      "change": "added",
+      "sha256": "09c589b73b63da0ab9d87c73b2ddb886c3ab31d61c1694791f639ef20861cb9c"
+    },
+    {
+      "path": "tests/browser-storage.mjs",
+      "change": "added",
+      "sha256": "1dd0c6990fd162cf9bc7a2b556d8a5b6457b73f0e1b727354c3108b602b5a49e"
+    },
+    {
+      "path": "tests/qa-environment.mjs",
+      "change": "added",
+      "sha256": "c5b7dc23edddebb996adc76180d07b7d2090a5c7aecd921d85833e1fb3c31246"
+    },
+    {
+      "path": "tests/storage-concurrency.mjs",
+      "change": "added",
+      "sha256": "90cb18788d625a7f1ec19a3734892237ff2eb86145b22585c23603da980563ff"
+    }
+  ],
+  "allAssetsAnd22MigrationsUnchanged": true,
+  "productionEdgeSourcesUnchanged": true
+}

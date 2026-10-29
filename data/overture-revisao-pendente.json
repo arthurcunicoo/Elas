@@ -1,0 +1,254 @@
+[
+  {
+    "gers": "9d97a798-8973-4c1d-9c44-4a8b566ea175",
+    "name": "Posto Stadium Petrobrás",
+    "category": "services",
+    "coordinates": [
+      -49.36904713,
+      -28.68372422
+    ],
+    "address": "R. Des. Pedro Silva, 355 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:165634199"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "7fe76510-2290-42ff-9fb5-e8b37fcd55c2",
+    "name": "Faculdade Senac Criciúma",
+    "category": "education",
+    "coordinates": [
+      -49.37589073,
+      -28.6784074
+    ],
+    "address": "R. Henrique Lage, 560 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:452308735"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "a0f5c3e1-b162-4a13-8c87-3baaf77bb021",
+    "name": "Santander Brasil",
+    "category": "services",
+    "coordinates": [
+      -49.3677129,
+      -28.6801382
+    ],
+    "address": "Avenida Centenário, 3605 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:node:5564732634"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "f2f183f1-388e-4795-a59c-4137c1349735",
+    "name": "Raffitis Pizzaria",
+    "category": "restaurants",
+    "coordinates": [
+      -49.37427955,
+      -28.69229665
+    ],
+    "address": "Av. Santos Dumont, 2106 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:263153765"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "65e75226-22a0-4266-893f-dcff6f809580",
+    "name": "SENAI Criciúma",
+    "category": "education",
+    "coordinates": [
+      -49.36581203,
+      -28.68792931
+    ],
+    "address": "R. Gen. Lauro Sodré, 300 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:node:5566687867"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "4713b7df-c70b-4c46-948c-23cfaa022553",
+    "name": "McDonald's",
+    "category": "restaurants",
+    "coordinates": [
+      -49.37512149,
+      -28.6800667
+    ],
+    "address": "AVENIDA CENTENARIO, 2780 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:764468257"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "629d7f03-b008-453a-bc4d-f307fb8e4418",
+    "name": "Havan Criciúma Shopping",
+    "category": "shops",
+    "coordinates": [
+      -49.34903572,
+      -28.68200916
+    ],
+    "address": "Av. Gabriel Zanette, 1455 · Criciúma · SC",
+    "candidate_ids": [
+      "overture:52e7790c-14ed-4ddb-9e02-82ff0e8985f8"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "b035cee9-c899-4a6a-b6fe-fc421791fe63",
+    "name": "Restaurante Toca do Casario",
+    "category": "restaurants",
+    "coordinates": [
+      -49.37188165,
+      -28.68229795
+    ],
+    "address": "R. Joaquim Nabuco, 311 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:1228105276"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "36cf5b15-75f7-48c6-9f24-0536aeb8c4a4",
+    "name": "In Box Burger Drive Thru",
+    "category": "restaurants",
+    "coordinates": [
+      -49.3537203,
+      -28.69609763
+    ],
+    "address": "R. Miguel Patrício de Souza, 1625 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:1280028262"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "701a64bb-6094-403d-8cb0-86185132c512",
+    "name": "Unica Computadores e Informatica",
+    "category": "services",
+    "coordinates": [
+      -49.37222728,
+      -28.69300579
+    ],
+    "address": "R. Pres. Prudente, 302 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:1417559098"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "2cc2a08f-1852-4ffd-95c9-9560390d3fe1",
+    "name": "Colégio Marista",
+    "category": "education",
+    "coordinates": [
+      -49.36200363,
+      -28.67475924
+    ],
+    "address": "Rua Antônio de Lucca, 334 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:node:4468854277"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "5c0f57d5-2919-4777-89fc-4ba442cda9d7",
+    "name": "Malaguetta Pizzaria",
+    "category": "restaurants",
+    "coordinates": [
+      -49.37360948,
+      -28.69208369
+    ],
+    "address": "Atendimento Online - Av. Santos Dumont, 2163 (49 - 99174-8511 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:263153765"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "a8bd29df-a161-414a-b749-ab918f285c5b",
+    "name": "Academia AD3 Criciúma - Rua Coberta",
+    "category": "sports",
+    "coordinates": [
+      -49.37254432,
+      -28.67763667
+    ],
+    "address": "R. Henrique Lage, 204 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:way:1417559097"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "8db27b49-cccf-45af-a9c7-b2d2c5a7bab3",
+    "name": "Escola Guga Unidade Criciúma Clube",
+    "category": "sports",
+    "coordinates": [
+      -49.368696212769,
+      -28.670915555021
+    ],
+    "address": "Rua Doutor José Tarquínio Balsini, 225 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:relation:14568296"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "3a9633f8-477b-4ea7-9d71-05a08d604b51",
+    "name": "Caixa",
+    "category": "services",
+    "coordinates": [
+      -49.36907201,
+      -28.67648435
+    ],
+    "address": "R. Santo Antônio, 180 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:node:2489521872"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "2f142792-74d5-4049-befb-7bde4963135d",
+    "name": "Nissan - Grupo Vipcar",
+    "category": "shops",
+    "coordinates": [
+      -49.359229,
+      -28.679065
+    ],
+    "address": "Avenida Centenário, 4560 · Criciúma · SC",
+    "candidate_ids": [
+      "osm:node:5564755579"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "8bfcdafe-9bc6-4ab5-9740-63b32f3c015d",
+    "name": "Loja Meri Nuernberg",
+    "category": "shops",
+    "coordinates": [
+      -49.37038907,
+      -28.67411278
+    ],
+    "address": "Rua São José, 541 · Criciúma · SC",
+    "candidate_ids": [
+      "overture:f2f1feb7-0cc8-4145-b2cb-6435f67e8877"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  },
+  {
+    "gers": "764ddfc2-662d-49ec-b926-42afea41f830",
+    "name": "Vialaser Depilação a Laser Criciúma - Metropolitan Business Center",
+    "category": "services",
+    "coordinates": [
+      -49.36658119,
+      -28.67526627
+    ],
+    "address": "R. Cel. Pedro Benedet, 333 - Lj 03 · Criciúma · SC",
+    "candidate_ids": [
+      "overture:ee217d88-9fd7-450c-af8a-fa5c2b2afbdc"
+    ],
+    "reason": "Possible overlap; requires verification before importing."
+  }
+]

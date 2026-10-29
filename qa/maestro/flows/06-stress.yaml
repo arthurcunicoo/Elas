@@ -1,0 +1,23 @@
+appId: ${APP_ID}
+name: Navegação repetida sem limpar o processo
+---
+- launchApp:
+    stopApp: false
+- assertVisible:
+    id: "nav-map"
+- repeat:
+    times: 10
+    commands:
+      - tapOn:
+          id: "nav-map"
+      - swipe:
+          start: 50%, 65%
+          end: 40%, 55%
+          duration: 500
+      - tapOn:
+          id: "nav-events"
+      - tapOn:
+          id: "nav-reports"
+      - tapOn:
+          id: "nav-profile"
+- takeScreenshot: ${SCREENSHOT_DIR}/11-stress

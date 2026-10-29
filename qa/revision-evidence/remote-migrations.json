@@ -1,0 +1,84 @@
+{
+  "migrations": [
+    {
+      "version": "20260929122801",
+      "name": "initial_mvp"
+    },
+    {
+      "version": "20261001133122",
+      "name": "reports_improvements"
+    },
+    {
+      "version": "20261001180453",
+      "name": "osm_places_catalog"
+    },
+    {
+      "version": "20261001182911",
+      "name": "osm_shared_upstream_lease"
+    },
+    {
+      "version": "20261008145118",
+      "name": "mvp_evolution"
+    },
+    {
+      "version": "20261008145137",
+      "name": "community_features"
+    },
+    {
+      "version": "20261008182530",
+      "name": "app_flow_polish"
+    },
+    {
+      "version": "20261008182608",
+      "name": "private_avatars"
+    },
+    {
+      "version": "20261013135557",
+      "name": "place_sources_enrichment"
+    },
+    {
+      "version": "20261015173653",
+      "name": "app_demonstration_content"
+    },
+    {
+      "version": "20261019161613",
+      "name": "community_review_summaries"
+    },
+    {
+      "version": "20261020124725",
+      "name": "cursor_pagination"
+    },
+    {
+      "version": "20261020133648",
+      "name": "community_scopes_poll_visibility"
+    },
+    {
+      "version": "20261020142143",
+      "name": "spatial_search_service_areas"
+    },
+    {
+      "version": "20261020142203",
+      "name": "catalog_background_job"
+    },
+    {
+      "version": "20261022133600",
+      "name": "review_policy_metadata"
+    },
+    {
+      "version": "20261022134052",
+      "name": "compact_review_policy_payload"
+    },
+    {
+      "version": "20261022163527",
+      "name": "operational_retention_and_moderation"
+    },
+    {
+      "version": "20261022163535",
+      "name": "push_notifications_outbox"
+    },
+    {
+      "version": "20261022164402",
+      "name": "push_lease_lookup_index"
+    }
+  ]
+}

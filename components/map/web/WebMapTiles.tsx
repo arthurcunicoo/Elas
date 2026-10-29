@@ -1,0 +1,127 @@
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
+import { Image, StyleSheet, View } from "react-native";
+import { TILE, visibleTiles } from "../../../features/map/web/geometry";
+import { tileUrl, type TileProvider } from "../../../features/map/web/tileProvider";
+type Props = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  zoom: number;
+  provider: TileProvider | null;
+  onLoadStateChange?: (state: "ready" | "error") => void;
+  onFailure: (failed: boolean) => void;
+};
+export const WebMapTiles = memo(function WebMapTiles(props: Props) {
+  return <TileLayer key={`${props.provider?.template ?? "disabled"}:${props.provider?.maxZoom ?? 0}`} {...props} />;
+});
+const TileLayer = memo(function TileLayer({
+  left,
+  top,
+  width,
+  height,
+  zoom,
+  provider,
+  onLoadStateChange,
+  onFailure,
+}: Props) {
+  const tileLeft = Math.floor(left / TILE) * TILE,
+    tileTop = Math.floor(top / TILE) * TILE;
+  const columns = width
+    ? Math.floor((left + width - 1) / TILE) - tileLeft / TILE + 1
+    : 0;
+  const rows = height
+    ? Math.floor((top + height - 1) / TILE) - tileTop / TILE + 1
+    : 0;
+  const tiles = useMemo(
+    () => visibleTiles(tileLeft, tileTop, columns * TILE, rows * TILE, zoom),
+    [tileLeft, tileTop, columns, rows, zoom],
+  );
+  const states = useRef(new Map<string, boolean>()),
+    ready = useRef(false),
+    mounted = useRef(true),
+    failure = useRef<boolean | null>(null);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
+  const keys = tiles.map(({ x, y }) => `${zoom}/${x}/${y}`).join(",");
+  const current = useRef({ keys, onLoadStateChange, onFailure });
+  current.current = { keys, onLoadStateChange, onFailure };
+  const notify = useCallback(() => {
+    const visible = current.current.keys.split(",").filter(Boolean);
+    const failed = visible.some((key) => states.current.get(key) === false);
+    if (failure.current !== failed) {
+      failure.current = failed;
+      current.current.onFailure(failed);
+    }
+    if (
+      !ready.current &&
+      visible.length &&
+      visible.every((key) => states.current.has(key))
+    ) {
+      ready.current = !failed;
+      current.current.onLoadStateChange?.(failed ? "error" : "ready");
+    }
+  }, []);
+  useEffect(() => {
+    if (!provider) {
+      current.current.onLoadStateChange?.("error");
+      return;
+    }
+    notify();
+  }, [keys, provider, notify]);
+  const finished = useCallback(
+    (key: string, succeeded: boolean) => {
+      if (!mounted.current) return;
+      states.current.delete(key);
+      states.current.set(key, succeeded);
+      // Preserve visible entries even on wide displays; bound historical tile state.
+      const active = new Set(current.current.keys.split(","));
+      for (const candidate of states.current.keys()) {
+        if (states.current.size <= Math.max(128, active.size)) break;
+        if (!active.has(candidate)) states.current.delete(candidate);
+      }
+      notify();
+    },
+    [notify],
+  );
+  const images = useMemo(
+    () =>
+      provider
+        ? tiles.map(({ x, y }) => {
+            const uri = tileUrl(provider, zoom, x, y),
+              key = `${zoom}/${x}/${y}`;
+            return uri ? (
+              <Image
+                key={key}
+                source={{ uri }}
+                onLoad={() => finished(key, true)}
+                onError={() => finished(key, false)}
+                style={{
+                  position: "absolute",
+                  width: TILE,
+                  height: TILE,
+                  left: x * TILE - tileLeft,
+                  top: y * TILE - tileTop,
+                }}
+              />
+            ) : null;
+          })
+        : null,
+    [tiles, provider, zoom, finished, tileLeft, tileTop],
+  );
+  return (
+    <View
+      pointerEvents="none"
+      style={[
+        StyleSheet.absoluteFill,
+        {
+          transform: [
+            { translateX: tileLeft - left },
+            { translateY: tileTop - top },
+          ],
+        },
+      ]}
+    >
+      {images}
+    </View>
+  );
+});

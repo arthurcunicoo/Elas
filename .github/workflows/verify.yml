@@ -1,0 +1,44 @@
+name: Verificar ELAS
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Localizar o aplicativo
+        id: app
+        shell: bash
+        run: |
+          if [ -f package-lock.json ]; then
+            app_dir=.
+          elif [ -f Elas/package-lock.json ]; then
+            app_dir=Elas
+          else
+            exit 1
+          fi
+          echo "dir=$app_dir" >> "$GITHUB_OUTPUT"
+      - run: npm ci
+        working-directory: ${{ steps.app.outputs.dir }}
+      - run: npm run verify
+        working-directory: ${{ steps.app.outputs.dir }}
+      - name: Conferir os bundles Android, iOS e web
+        run: npx expo export --platform all --output-dir dist-ci
+        working-directory: ${{ steps.app.outputs.dir }}
+        env:
+          CI: "1"
+          EXPO_NO_TELEMETRY: "1"
+          EXPO_PUBLIC_DEMO: "1"
+          EXPO_PUBLIC_SHOWCASE: "0"
+      # This job checks compilation. It does not deploy the demo bundle or run a device.

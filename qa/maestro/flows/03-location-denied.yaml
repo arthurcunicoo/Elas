@@ -1,0 +1,21 @@
+appId: ${APP_ID}
+name: Localização negada mantém exploração manual
+---
+- runFlow: ../support/login.yaml
+- runFlow: ../support/map.yaml
+- setPermissions:
+    permissions:
+      location: deny
+- tapOn:
+    id: "map-locate"
+- runFlow:
+    when:
+      visible: "Não permitir|Don't allow|Don’t Allow|Negar"
+    commands:
+      - tapOn: "Não permitir|Don't allow|Don’t Allow|Negar"
+- extendedWaitUntil:
+    visible: "Ver aviso do mapa"
+    timeout: 20000
+- tapOn: "Ver aviso do mapa"
+- assertVisible: ".*Permissão negada.*"
+- takeScreenshot: ${SCREENSHOT_DIR}/09-location-denied

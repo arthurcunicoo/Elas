@@ -1,0 +1,6 @@
+{
+  "node-forge_latest_observed": "1.4.0",
+  "zod_latest_observed": "4.6.7",
+  "decision": "No cross-major Zod override in Expo CLI; no force downgrade of Expo",
+  "queriedVia": "npm registry, npm view on 2026-10-25"
+}

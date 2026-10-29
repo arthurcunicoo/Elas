@@ -1,0 +1,32 @@
+{
+  "baseVersion": 23,
+  "checks": [
+    {
+      "command": "npm run verify",
+      "status": "passed",
+      "evidence": "interface-evidence/verify.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "passed"
+    },
+    {
+      "command": "npm run lint",
+      "status": "passed_without_source_warnings"
+    },
+    {
+      "command": "node tests/interface.mjs",
+      "status": "passed",
+      "evidence": "interface-evidence/components.txt"
+    },
+    {
+      "command": "EXPO_NO_TELEMETRY=1 CI=1 npx expo export --platform all --output-dir /tmp/elas-ui-export-delivery",
+      "status": "passed",
+      "evidence": "interface-evidence/export.txt"
+    }
+  ],
+  "physicalDeviceTestsExecuted": false,
+  "releaseEvidencePending": 22,
+  "dependenciesUpdated": false,
+  "databaseChanged": false
+}

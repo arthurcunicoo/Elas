@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+name: Sessão persistida e retorno do background
+---
+- runFlow: ../support/login.yaml
+- runFlow: ../support/map.yaml
+- pressKey: Home
+- launchApp:
+    stopApp: false
+- assertVisible:
+    id: "nav-map"
+- stopApp
+- launchApp
+- assertVisible:
+    id: "nav-map"
+- assertNotVisible:
+    id: "auth-password"
+- takeScreenshot: ${SCREENSHOT_DIR}/08-session-restored

@@ -1,0 +1,50 @@
+import assert from 'node:assert/strict';
+import { placeProminence, rankPlaces, visibleMapPlaces, catalogShortlist } from '../constants/placeRelevance.ts';
+import { createCatalogHandler } from '../supabase/functions/lugares-osm/catalog.ts';
+const region={latitude:-28.678,longitude:-49.369,latitudeDelta:.05,longitudeDelta:.05};
+const size={width:390,height:700};
+const place=(id,name,category,latitude=region.latitude,longitude=region.longitude)=>({id,name,category,latitude,longitude});
+const local=place('small','Loja do bairro','clothes');
+const landmark=place('della','Shopping Della','mall');
+const park=place('nereu','Praça Nereu Ramos','park',-28.677,-49.370);
+assert.ok(placeProminence(landmark)>placeProminence(local));
+assert.equal(placeProminence({...landmark,name:'SHOPPING DÉLLA'}),100);
+assert.ok(placeProminence(place('wrong','Plano de Saúde São José','hospital'))<placeProminence(place('hospital','Hospital São José','hospital')));
+assert.ok(placeProminence(place('oil','Shopping do Óleo','automotive_repair'))<placeProminence(landmark));
+assert.ok(placeProminence(place('median','Rótula Esquina','park'))<10);
+const rows=[local,landmark,park];
+const broad=visibleMapPlaces(rows,region,size);
+assert.ok(broad.some(p=>p.id===landmark.id));assert.ok(!broad.some(p=>p.id===local.id));
+// The same ordinary POI appears automatically when moving to street level.
+const close={...region,latitudeDelta:.001,longitudeDelta:.001};
+assert.ok(visibleMapPlaces(rows,close,size).some(p=>p.id===local.id));
+assert.ok(visibleMapPlaces(rows,region,size,local.id).some(p=>p.id===local.id));
+assert.ok(visibleMapPlaces([local],region,size,undefined,true).some(p=>p.id===local.id));
+assert.deepEqual(visibleMapPlaces(rows,region,{width:0,height:700}),[]);
+assert.deepEqual(visibleMapPlaces(rows,{...region,longitudeDelta:0},size),[]);
+assert.deepEqual(visibleMapPlaces([place('outside','Outside','mall',0,0)],region,size),[]);
+assert.deepEqual(visibleMapPlaces(rows,region,size).map(p=>p.id),visibleMapPlaces([...rows].reverse(),region,size).map(p=>p.id));
+const dense=Array.from({length:1400},(_,i)=>place(`ordinary-${i}`,'A loja '+i,'clothes',region.latitude+(i%40)*.0001,region.longitude+Math.floor(i/40)*.0001));
+dense.push(landmark,park,place('far','Hospital Santa Catarina','hospital',-28.69,-49.38));
+const short=catalogShortlist(dense);
+assert.equal(short.length,500);assert.equal(new Set(short.map(p=>p.id)).size,500);
+for(const id of ['della','nereu','far'])assert.ok(short.some(p=>p.id===id),id);
+assert.deepEqual(short.map(p=>p.id),catalogShortlist([...dense].reverse()).map(p=>p.id));
+assert.equal(rankPlaces(dense)[0].id,'della');
+const filtered=visibleMapPlaces(dense.filter(p=>p.category==='clothes'),region,size,undefined,true);
+assert.ok(filtered.length>0);assert.ok(filtered.length<80);
+// Full transport selection/category/close-up tests now run against PostgreSQL in spatial-db.mjs.
+console.log('Map relevance checks passed: major destinations, progressive reveal, overlap priority, filter visibility, pinned selection and stable ordering. SQL shortlist is tested with the real database extensions.');
+
+const zoomRegion=z=>({...region,longitudeDelta:360*390/(256*2**z),latitudeDelta:360*390/(256*2**z)*700/390});
+const dispersed=Array.from({length:180},(_,i)=>place('small-'+i,'Loja local '+i,'clothes',region.latitude+(i%15-7)*.00010,region.longitude+(Math.floor(i/15)-6)*.00010));
+for(const z of [15,16,17])assert.equal(visibleMapPlaces(dispersed,zoomRegion(z),size).length,0,'small stores should wait for close zoom '+z);
+const at18=visibleMapPlaces(dispersed,zoomRegion(18),size),at19=visibleMapPlaces(dispersed,zoomRegion(19),size);
+assert.ok(at18.length<12,'still suppress clutter before full street detail');
+assert.ok(at19.length>at18.length,'full detail requires a closer view');
+// Geography determines eligibility on tablets too, independently of pixel width.
+const wide=visibleMapPlaces(dispersed,zoomRegion(17),{width:1024,height:700});assert.equal(wide.length,0);
+const screenDense=Array.from({length:300},(_,i)=>place('restaurant-'+i,'Restaurante '+i,'restaurant',region.latitude+(i%20-10)*.0001,region.longitude+(Math.floor(i/20)-7)*.0001));
+assert.ok(visibleMapPlaces(screenDense,zoomRegion(17),size,undefined,true).length<20,'category filters keep a density budget');
+assert.ok(visibleMapPlaces(dispersed,zoomRegion(16),size,dispersed[70].id).some(p=>p.id===dispersed[70].id));
+console.log('Closer-zoom regression checks passed: intermediate zoom, street detail, tablet eligibility, filtered density and selected-place persistence.');

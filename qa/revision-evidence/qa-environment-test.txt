@@ -1,0 +1,1 @@
+QA environment checks passed: executable/file/PATH detection, Windows PATHEXT, no CLI execution or telemetry side effect, and credentials reduced to configuration booleans.

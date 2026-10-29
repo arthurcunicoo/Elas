@@ -1,0 +1,1 @@
+Admin roles passed: explicit authorization, audit, optimistic conflict, conditional last-admin counter, raw/Auth/erasure guards, self-demotion, bounded keyset, scope isolation and erasure anonymization. Concurrent intents are serialized locally, not independent connection proof.

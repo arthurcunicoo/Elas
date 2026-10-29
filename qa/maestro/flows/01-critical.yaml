@@ -1,0 +1,33 @@
+appId: ${APP_ID}
+name: Login, mapa, teclado, participação, relatos, eventos e impactos
+---
+- runFlow: ../support/login.yaml
+- runFlow: ../support/map.yaml
+- takeScreenshot: ${SCREENSHOT_DIR}/01-map
+- tapOn:
+    id: "map-search"
+- inputText: ${QA_PLACE_QUERY}
+- takeScreenshot: ${SCREENSHOT_DIR}/02-map-keyboard
+- hideKeyboard
+- tapOn:
+    id: "nav-participate"
+- assertVisible: "Como você quer participar?"
+- assertVisible: "Avaliar um lugar"
+- assertVisible: "Relatar uma situação"
+- takeScreenshot: ${SCREENSHOT_DIR}/03-participation
+- tapOn: "Relatar uma situação"
+- scrollUntilVisible:
+    element: "Descrição do relato"
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: ${SCREENSHOT_DIR}/04-report-form
+- openLink: ${APP_SCHEME}://alertas
+- assertVisible: "Na cidade, nas últimas 24h"
+- takeScreenshot: ${SCREENSHOT_DIR}/05-reports
+- tapOn:
+    id: "nav-events"
+- assertVisible: "Próximos eventos"
+- takeScreenshot: ${SCREENSHOT_DIR}/06-events
+- openLink: ${APP_SCHEME}://impactos
+- assertVisible: "Impactos na cidade"
+- takeScreenshot: ${SCREENSHOT_DIR}/07-impacts

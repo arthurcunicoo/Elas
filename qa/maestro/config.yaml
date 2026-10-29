@@ -1,0 +1,4 @@
+flows:
+  - "flows/01-critical.yaml"
+  - "flows/02-session.yaml"
+  - "flows/03-location-denied.yaml"

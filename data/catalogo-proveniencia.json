@@ -1,0 +1,44 @@
+{
+  "provider": "Overture Maps Places",
+  "release": "2026-09-23.1",
+  "bbox": [
+    -49.39,
+    -28.72,
+    -49.34,
+    -28.66
+  ],
+  "downloaded_features": 6618,
+  "raw_snapshot_sha256": "39ef15bcdee82eb4215379687fba16530ea63f84a112636cf9e6a4ce3ed86dee",
+  "prepared_stats": {
+    "downloaded": 6618,
+    "accepted": 1381,
+    "matched": 21,
+    "new": 1360,
+    "review": 18,
+    "rejected": {
+      "category_needs_review": 124,
+      "not_public_destination": 104,
+      "missing_street": 6,
+      "city_not_confirmed": 4,
+      "low_confidence": 4981
+    }
+  },
+  "imported_physical_rows": 1362,
+  "visible_new_entities_after_reconciliation": 1360,
+  "canonical_links_to_existing_places": 21,
+  "additional_low_confidence_human_verified_gers_links": 1,
+  "photo_source_files": [
+    {
+      "file": "assets/places/congresso.jpg",
+      "sha256": "a383bc200001033e2565e7b0d6fc1f95aca7421694a8638861c60a71e91a62a6"
+    },
+    {
+      "file": "assets/places/nacoes.jpg",
+      "sha256": "4eb18649a3751a5f104d3df4a60407906de5e80ae09521b2972a350d912edf63"
+    },
+    {
+      "file": "assets/places/nereu.jpg",
+      "sha256": "d0698a8a2de9c223f55c609005e2d0d9ef426d40661250bbbebc3c27d92755fb"
+    }
+  ]
+}

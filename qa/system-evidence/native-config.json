@@ -1,0 +1,11 @@
+{
+  "isolatedPrebuild": "passed",
+  "androidBackupManifest": true,
+  "secureStoreLibraryRules": {
+    "secure_store_backup_rules.xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<!--  Auto Backup configuration for Android 11 and lower -->\n<full-backup-content>\n  <include domain=\"sharedpref\" path=\".\"/>\n  <exclude domain=\"sharedpref\" path=\"SecureStore\"/>\n</full-backup-content>\n",
+    "secure_store_data_extraction_rules.xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<!--  Auto Backup configuration for Android 12 and higher -->\n<data-extraction-rules>\n  <cloud-backup>\n    <include domain=\"sharedpref\" path=\".\"/>\n    <exclude domain=\"sharedpref\" path=\"SecureStore\"/>\n  </cloud-backup>\n  <device-transfer>\n    <include domain=\"sharedpref\" path=\".\"/>\n    <exclude domain=\"sharedpref\" path=\"SecureStore\"/>\n  </device-transfer>\n</data-extraction-rules>\n"
+  },
+  "iOSKeyAccessibility": "WHEN_UNLOCKED_THIS_DEVICE_ONLY",
+  "warning": "iOS icon not defined in existing Expo config",
+  "signedBuildOrPhysicalInstall": false
+}

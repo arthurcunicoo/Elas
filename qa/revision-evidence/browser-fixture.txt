@@ -1,0 +1,1 @@
+Browser fixture HTTP checks passed: real production TypeScript compiled, local raw-storage boundary, module routes and private file rejection. This does not execute Chromium or prove E2E.

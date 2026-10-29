@@ -1,0 +1,6 @@
+{
+  "sourceMaps": 35,
+  "toolingAdvisorySources": [],
+  "patchedDecoderSources": 3,
+  "limitation": "Source-map dependency reachability only; not proof of no exploit in build/CI tools or native binaries."
+}

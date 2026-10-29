@@ -1,0 +1,1 @@
+{"kind":"local-http-protocol-only","passed":true,"operations":{"mapa_lugares":13,"painel_impactos":13,"resumos_avaliacoes":11,"lugares-osm":11,"eventos":12,"mapa_relatos":11,"lugares":11},"output":"/tmp/elas-load-protocol-qMcdQL","note":"Real k6, five virtual users, isolated fixture; no Supabase/database load benchmark."}

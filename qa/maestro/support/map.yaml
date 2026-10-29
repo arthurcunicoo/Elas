@@ -1,0 +1,11 @@
+appId: ${APP_ID}
+---
+- tapOn:
+    id: "nav-map"
+- runFlow:
+    when:
+      visible: "Continuar no app enquanto o mapa carrega"
+    commands:
+      - tapOn: "Continuar no app enquanto o mapa carrega"
+- assertVisible:
+    id: "map-search"

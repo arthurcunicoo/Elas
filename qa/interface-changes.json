@@ -1,0 +1,51 @@
+{
+  "baseVersion": 23,
+  "modified": [
+    "README.md",
+    "app/admin-publicacoes.tsx",
+    "app/alertas.tsx",
+    "app/eventos.tsx",
+    "app/favoritos.tsx",
+    "app/historico-impactos.tsx",
+    "app/relatos-area.tsx",
+    "components/AppSheet.tsx",
+    "components/TouchFeedback.tsx",
+    "components/shared/Buttons.tsx",
+    "components/shared/FormControls.tsx",
+    "constants/theme.ts",
+    "features/admin/AdminScreen.tsx",
+    "features/community/NotificationsList.tsx",
+    "features/reports/OwnRecordsScreen.tsx",
+    "features/reviews/MyReviewsScreen.tsx",
+    "package.json",
+    "tests/product-flows.mjs",
+    "components/loading/LoadingState.tsx",
+    "components/loading/ListSkeleton.tsx"
+  ],
+  "added": [
+    "components/shared/CollectionState.tsx",
+    "features/admin/AdminFilters.tsx",
+    "tests/interface.mjs",
+    "qa/interface-removed-styles.json",
+    "qa/interface-changes.json",
+    "qa/interface-validation.json",
+    "INTERFACE-SOL-2026-10-25.md",
+    "qa/interface-device-checklist.md",
+    "qa/interface-evidence/verify.txt",
+    "qa/interface-evidence/export.txt",
+    "qa/interface-evidence/components.txt"
+  ],
+  "databaseChanges": false,
+  "dependenciesChanged": false,
+  "preservedByteForByte": [
+    "features/reports/drafts.ts",
+    "features/reports/draftStorage.ts",
+    "features/profile/usePagedList.ts",
+    "features/community/dates.ts",
+    "components/map/web/WebMapTiles.tsx",
+    "components/loading/CityPulse.tsx",
+    "hooks/useLoadingMotion.ts",
+    "package-lock.json",
+    "qa/release-evidence.json"
+  ]
+}

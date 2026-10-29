@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {createRefreshHandler,jobTokenHash} from '../supabase/functions/catalog-refresh/worker.ts';
+const secret='a'.repeat(64),hash=await jobTokenHash(secret);
+let reserves=0,commits=[],failures=[],upstreamCalls=0,fail=false,idle=false;
+const lease={lease:'00000000-0000-0000-0000-000000000001',bounds:{south:-27.7,north:-27.5,west:-48.6,east:-48.4},area:{id:'florianopolis',nome:'Florianópolis',estado:'SC'}};
+const store={reserve:async value=>{reserves++;if(value!==hash)throw Object.assign(Error('denied'),{code:'42501'});return idle?null:lease;},
+ candidates:async()=>[],commit:async(l,b)=>{commits.push([l,b]);return {created:b.rows.length,updated:0,unchanged:0,manualPreserved:0,received:b.received,rejected:b.rejected,discarded:b.discarded};},fail:async(...args)=>failures.push(args)};
+const payload={elements:[{type:'node',id:42,lat:-27.6,lon:-48.5,tags:{name:'Biblioteca comunitária',amenity:'library'}}]};
+const handler=createRefreshHandler(store,async()=>{upstreamCalls++;return fail?new Response('',{status:429}):Response.json(payload);});
+const req=(token=secret)=>new Request('https://test.invalid',{method:'POST',headers:token?{'x-catalog-job-key':token}:{}});
+assert.equal((await handler(req(null))).status,401);assert.equal(reserves,0);assert.equal(upstreamCalls,0);
+assert.equal((await handler(req('b'.repeat(64)))).status,401);assert.equal(upstreamCalls,0);
+let response=await handler(req());assert.equal(response.status,200);assert.deepEqual(await response.json(),{status:'updated',received:1});
+assert.equal(commits.length,1);assert.equal(commits[0][0],lease.lease);assert.equal(commits[0][1].rows[0].endereco,'Florianópolis · SC');assert.equal(failures.length,0,'success must finish in the atomic RPC, not in a second call');
+fail=true;response=await handler(req());assert.equal(response.status,503);assert.equal(commits.length,1);assert.deepEqual(failures.at(-1),[lease.lease,0,'source_http_429']);
+idle=true;const before=upstreamCalls;assert.deepEqual(await(await handler(req())).json(),{status:'idle'});assert.equal(upstreamCalls,before);
+assert.equal((await handler(new Request('https://test.invalid',{method:'GET'}))).status,405);
+assert.ok(!JSON.stringify(failures).includes(secret));
+let attempts=0;
+const lostAck=createRefreshHandler({...store,reserve:async()=>lease,commit:async(l,b)=>{attempts++;if(attempts===1)throw TypeError('lost ACK');return store.commit(l,b);}},async()=>Response.json(payload));
+assert.equal((await lostAck(req())).status,200);assert.equal(attempts,2,'bounded replay of the same batch');
+const failing=createRefreshHandler({...store,reserve:async()=>lease,commit:async()=>{throw Object.assign(Error('private db details'),{code:'22023'});}},async()=>Response.json(payload));
+assert.equal((await failing(req())).status,503);assert.equal(failures.at(-1)[2],'commit_rejected');
+console.log('Catalog worker passed: machine authentication, immutable batch/lease commit, no separate success ACK, bounded lost-ACK replay, quota preservation and definite database failure. Source transport is simulated.');

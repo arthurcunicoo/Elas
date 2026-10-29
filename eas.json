@@ -1,0 +1,61 @@
+{
+  "cli": {
+    "version": "25.3.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "qa": {
+      "distribution": "internal",
+      "environment": "preview",
+      "env": {
+        "APP_VARIANT": "qa",
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_QA_DIAGNOSTICS": "1",
+        "EXPO_PUBLIC_DEMO": "0",
+        "EXPO_PUBLIC_SHOWCASE": "0"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "qa-simulator": {
+      "extends": "qa",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "production": {
+      "environment": "production",
+      "autoIncrement": true,
+      "env": {
+        "APP_VARIANT": "production",
+        "EXPO_PUBLIC_APP_ENV": "production",
+        "EXPO_PUBLIC_QA_DIAGNOSTICS": "0",
+        "EXPO_PUBLIC_DEMO": "0",
+        "EXPO_PUBLIC_SHOWCASE": "0"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "production-apk": {
+      "extends": "production",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "presentation": {
+      "extends": "production-apk",
+      "environment": "preview",
+      "env": {
+        "APP_VARIANT": "presentation",
+        "EXPO_PUBLIC_APP_ENV": "presentation",
+        "EXPO_PUBLIC_DEMO": "0",
+        "EXPO_PUBLIC_SHOWCASE": "1",
+        "EXPO_PUBLIC_QA_DIAGNOSTICS": "0",
+        "EXPO_PUBLIC_ACCOUNT_ERASURE_ENABLED": "false"
+      }
+    }
+  }
+}

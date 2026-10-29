@@ -1,0 +1,103 @@
+{
+  "inspectedOn": "2026-10-27",
+  "timeZone": "America/Sao_Paulo",
+  "base": {
+    "name": "ELAS-liquid-glass-v7-onboarding.zip",
+    "sha256": "b716452a435ccb80fa0929a0fcfc95da21a53f12dd361982a096c85f598ceef3"
+  },
+  "project": "pxcbzjxgxdmdayqwpqcj",
+  "databaseWrites": false,
+  "remote": {
+    "backendVersion": 11,
+    "appliedMigrations": 20,
+    "packagedMigrations": 22,
+    "pendingMigrations": [
+      "20261025213938_account_erasure_controls.sql",
+      "20261025214404_catalog_job_jitter.sql"
+    ],
+    "roles": {
+      "admin": 1
+    },
+    "publicTablesWithoutRls": 0,
+    "privateClientTableGrants": 0,
+    "publicDefinersExecutableByClients": 0,
+    "branches": 0,
+    "deployedFunctions": [
+      "lugares-osm",
+      "catalog-refresh",
+      "push-delivery"
+    ],
+    "pushEnabled": false,
+    "pushDeliveryCron": false,
+    "scheduledJobs": [
+      {
+        "name": "elas-catalog-refresh",
+        "schedule": "*/10 * * * *",
+        "active": true
+      },
+      {
+        "name": "elas-idempotency-retention",
+        "schedule": "20 * * * *",
+        "active": true
+      },
+      {
+        "name": "elas-push-retention",
+        "schedule": "30 * * * *",
+        "active": true
+      }
+    ],
+    "catalogueRows": 1535,
+    "catalogueTiles": 81,
+    "catalogueTilesWithSuccessfulUpdate": 0,
+    "catalogueRecordedErrors": [
+      "upstream_or_import_failed"
+    ],
+    "advisors": {
+      "security": {
+        "leakedPasswordProtection": "disabled",
+        "rlsEnabledNoPolicy": 8
+      },
+      "performance": {
+        "unindexedForeignKeys": 1,
+        "unusedIndexes": 29
+      }
+    }
+  },
+  "localConfig": {
+    "sameBackendAsReviewed": true,
+    "accountErasureEnabled": false,
+    "sentryDsnConfigured": false,
+    "privateKeyVariablesPresent": false
+  },
+  "tests": {
+    "verify": {
+      "status": "passed",
+      "exitCode": 0,
+      "log": "qa/backend-admin-verify.txt"
+    },
+    "initialDatabaseChecks": 120,
+    "adminCases": [
+      "menu permits exactly admin",
+      "four admin route guards",
+      "signed-out and demo denied",
+      "unknown and malformed roles denied",
+      "RPC error denies privileges",
+      "deep link waits for role",
+      "ordinary screens not blocked",
+      "account switch and stale responses",
+      "logout clears privileges",
+      "foreground revalidation",
+      "revocation removes access",
+      "denied panel does not mount queries"
+    ],
+    "lintErrors": 0,
+    "lintWarnings": 3
+  },
+  "limitations": [
+    "Router guard configuration uses real TSX with simulated navigation hosts; no native navigation E2E.",
+    "Auth/Storage roles in local PostgreSQL are simulated; no live multi-account staging test.",
+    "No production migration, deployment, role edit, e-mail, push or deletion.",
+    "Existing limited backend moderator rights intentionally preserved.",
+    "Catalogue source failure root cause and atomic-import fix remain pending."
+  ]
+}

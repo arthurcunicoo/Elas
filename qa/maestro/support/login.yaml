@@ -1,0 +1,22 @@
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- tapOn: "Começar"
+- tapOn:
+    id: "auth-email"
+- inputText: ${QA_EMAIL}
+- tapOn:
+    id: "auth-password"
+- inputText: ${QA_PASSWORD}
+- hideKeyboard
+- tapOn:
+    id: "auth-submit"
+- extendedWaitUntil:
+    visible:
+      id: "nav-map"
+    timeout: 30000
+- openLink: ${APP_SCHEME}://diagnostico
+- assertVisible: ".*Backend: ${QA_HOST}.*"
+- takeScreenshot: ${SCREENSHOT_DIR}/00-build-info
+- openLink: ${APP_SCHEME}://mapa

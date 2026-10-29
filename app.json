@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Elas",
+    "slug": "elas-na-cidade",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "scheme": "elas",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "asyncRoutes": {
+            "web": "production",
+            "default": false
+          }
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "A localização é usada somente quando você solicita, para mostrar sua posição e vincular um relato opcionalmente."
+        }
+      ],
+      "@react-native-community/datetimepicker",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Escolha uma foto para seu perfil.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "A localização é usada apenas quando você solicita, para mostrar sua posição no mapa e permitir anexar uma localização aproximada a um relato."
+      },
+      "bundleIdentifier": "br.com.elasnacidade.app"
+    },
+    "android": {
+      "softwareKeyboardLayoutMode": "resize",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "package": "br.com.elasnacidade.app"
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

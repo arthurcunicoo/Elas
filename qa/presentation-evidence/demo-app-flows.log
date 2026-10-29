@@ -1,0 +1,11 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:app
+> node tests/app-flows.mjs && node tests/product-flows.mjs
+
+(node:19) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/scratch/16bf12222e9b/demo-presentation/Elas/lib/eventPresentation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/scratch/16bf12222e9b/demo-presentation/Elas/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+App flow checks passed: neutral poll UI/results/receipt/failure/change/end/demo, one sheet per task, place selection/back, inline validation/focus, draft preservation, routed-place loading, one send per double tap, complete request payload, retry, success tracking, isolated demo events and real action, confirm/cancel, shared field refs/errors/password/focus, disabled/busy actions, accessible page header, São Paulo event dates.
+Product UI checks passed: stale/account/sign-out isolation, personal/city counters and cards, separate history routes, canonical notification inbox and explicit pending-report privacy. Native layout is not simulated.

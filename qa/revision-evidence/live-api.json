@@ -1,0 +1,34 @@
+{
+  "mode": "bounded read/auth-rejection only; no writes, email or push",
+  "results": [
+    {
+      "operation": "/rest/v1/rpc/versao_app",
+      "status": 401,
+      "passed": true,
+      "durationMs": 6929,
+      "expectedStatus": [
+        401,
+        403
+      ],
+      "contract": "versao_app is authenticated-only, verified by database grants"
+    },
+    {
+      "operation": "/rest/v1/perfis?select=id&limit=1",
+      "status": 401,
+      "passed": true,
+      "durationMs": 5369
+    },
+    {
+      "operation": "/functions/v1/catalog-refresh",
+      "status": 401,
+      "passed": true,
+      "durationMs": 5561
+    },
+    {
+      "operation": "/functions/v1/push-delivery",
+      "status": 401,
+      "passed": true,
+      "durationMs": 236
+    }
+  ]
+}

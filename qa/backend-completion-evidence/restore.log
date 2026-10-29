@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> elas@1.1.0 test:restore
+> node tests/restore-drill.mjs
+
+Local restore drill passed: closed source, new restored database, all migrations/data/auth shim/Storage metadata, separate asset bytes, checksum rejection and preserved RLS. This is not a managed Supabase backup or production restore.

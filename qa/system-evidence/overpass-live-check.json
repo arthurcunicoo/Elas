@@ -1,0 +1,15 @@
+{
+  "request": "POST /api/interpreter, URL-encoded data=[out:json][timeout:10];node(42);out;",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "status": 406,
+  "response": "Generic nginx HTML, no actionable cause",
+  "rootCauseProven": false,
+  "fallbackToEvade406": false,
+  "controlledFixtureImport": {
+    "received": 5,
+    "created": 1,
+    "updated": 1,
+    "discarded": 1,
+    "rejected": 2
+  }
+}

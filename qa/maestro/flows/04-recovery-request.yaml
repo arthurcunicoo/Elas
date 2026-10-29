@@ -1,0 +1,16 @@
+appId: ${APP_ID}
+name: Solicitar código real na caixa de teste
+---
+- launchApp:
+    clearState: true
+- openLink: ${APP_SCHEME}://recuperar-senha
+- tapOn:
+    id: "recovery-email"
+- inputText: ${QA_EMAIL}
+- hideKeyboard
+- tapOn: "Enviar código"
+- extendedWaitUntil:
+    visible:
+      id: "recovery-code"
+    timeout: 30000
+- takeScreenshot: ${SCREENSHOT_DIR}/10-recovery-code

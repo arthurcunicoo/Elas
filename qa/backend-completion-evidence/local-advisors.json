@@ -1,0 +1,9 @@
+{
+  "scope": "isolated PostgreSQL, not a remote Supabase advisor",
+  "public_without_rls": 0,
+  "private_client_grants": 0,
+  "public_client_definers": 0,
+  "raw_service_insert": false,
+  "raw_service_update": false,
+  "backend_version": 12
+}

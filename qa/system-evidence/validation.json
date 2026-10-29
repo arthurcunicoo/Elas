@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-25",
+  "baseLibraryVersion": 24,
+  "baseSha256": "21dc882c9834f7277ac5ed62137fe1943462edf4c9f47bbf8c2a4ae4bde7bb6e",
+  "checks": [
+    {
+      "command": "npm run verify",
+      "status": "passed",
+      "evidence": "verify.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "passed",
+      "evidence": "typecheck.txt"
+    },
+    {
+      "command": "npm run lint",
+      "status": "passed",
+      "evidence": "lint.txt"
+    },
+    {
+      "command": "npm ci --ignore-scripts --no-audit (clean directory)",
+      "status": "passed",
+      "evidence": "clean-install.txt"
+    },
+    {
+      "command": "EXPO_NO_TELEMETRY=1 CI=1 npx expo export --platform all --source-maps",
+      "status": "passed",
+      "evidence": "export.txt"
+    },
+    {
+      "command": "EXPO_NO_TELEMETRY=1 EXPO_OFFLINE=1 CI=1 npx expo prebuild --no-install --platform all (isolated)",
+      "status": "passed_with_existing_iOS_icon_warning",
+      "evidence": "native-prebuild.txt"
+    },
+    {
+      "command": "npm audit --json",
+      "status": "7_high_0_critical_0_moderate",
+      "exitCode": 1,
+      "evidence": "audit-after.json"
+    },
+    {
+      "command": "controlled read-only Overpass probe",
+      "status": "unresolved_406",
+      "evidence": "overpass-live-check.json"
+    },
+    {
+      "command": "real staging Auth/Storage erasure",
+      "status": "not_run"
+    },
+    {
+      "command": "signed Android/iOS builds and physical device E2E/FPS/RAM/push",
+      "status": "not_run"
+    },
+    {
+      "command": "Supabase CLI external telemetry",
+      "status": "automatic_approval_rejected",
+      "reason": "Unnecessary PostHog telemetry; payload and retention unverified; not retried"
+    }
+  ],
+  "productionChanged": false,
+  "canonicalMigrations": 22,
+  "requiredBackendVersion": 11,
+  "accountErasureEnabledByDefault": false,
+  "pushDeliveryEnabledByDefault": false,
+  "releaseCertified": false
+}

@@ -1,0 +1,344 @@
+{
+  "result": {
+    "lints": [
+      {
+        "name": "unindexed_foreign_keys",
+        "title": "Unindexed foreign keys",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Table \\`private.publicacoes_historico\\` has a foreign key \\`publicacoes_historico_responsavel_id_fkey\\` without a covering index. This can lead to suboptimal query performance.",
+            "metadata": {
+              "name": "publicacoes_historico",
+              "type": "table",
+              "schema": "private",
+              "fkey_name": "publicacoes_historico_responsavel_id_fkey",
+              "fkey_columns": [
+                6
+              ]
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          }
+        ]
+      },
+      {
+        "name": "unused_index",
+        "title": "Unused Index",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Detects if an index has never been used and may be a candidate for removal.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+        "count": 33,
+        "findings": [
+          {
+            "detail": "Index \\`push_dispositivos_usuario\\` on table \\`private.push_dispositivos\\` has not been used",
+            "metadata": {
+              "name": "push_dispositivos",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`push_dispositivos_expiracao\\` on table \\`private.push_dispositivos\\` has not been used",
+            "metadata": {
+              "name": "push_dispositivos",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`push_fila_pendente\\` on table \\`private.push_fila\\` has not been used",
+            "metadata": {
+              "name": "push_fila",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`push_fila_notificacao\\` on table \\`private.push_fila\\` has not been used",
+            "metadata": {
+              "name": "push_fila",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`push_fila_instalacao\\` on table \\`private.push_fila\\` has not been used",
+            "metadata": {
+              "name": "push_fila",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`push_fila_usuario\\` on table \\`private.push_fila\\` has not been used",
+            "metadata": {
+              "name": "push_fila",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`push_fila_retencao\\` on table \\`private.push_fila\\` has not been used",
+            "metadata": {
+              "name": "push_fila",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`relatos_lugar_idx\\` on table \\`public.relatos\\` has not been used",
+            "metadata": {
+              "name": "relatos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`historico_usuario_data_idx\\` on table \\`public.historico_status\\` has not been used",
+            "metadata": {
+              "name": "historico_status",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`historico_responsavel_idx\\` on table \\`public.historico_status\\` has not been used",
+            "metadata": {
+              "name": "historico_status",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`lugares_relevancia\\` on table \\`public.lugares\\` has not been used",
+            "metadata": {
+              "name": "lugares",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`avaliacao_fatores_fator_idx\\` on table \\`public.avaliacao_fatores\\` has not been used",
+            "metadata": {
+              "name": "avaliacao_fatores",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`relatos_status_data_idx\\` on table \\`public.relatos\\` has not been used",
+            "metadata": {
+              "name": "relatos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`relatos_usuario_data_idx\\` on table \\`public.relatos\\` has not been used",
+            "metadata": {
+              "name": "relatos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`inscricoes_evento_idx\\` on table \\`public.inscricoes\\` has not been used",
+            "metadata": {
+              "name": "inscricoes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`votos_opcao_idx\\` on table \\`public.votos\\` has not been used",
+            "metadata": {
+              "name": "votos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`lugares_fontes_lugar_idx\\` on table \\`public.lugares_fontes\\` has not been used",
+            "metadata": {
+              "name": "lugares_fontes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`conteudos_demo_lugar_idx\\` on table \\`public.conteudos_demonstracao\\` has not been used",
+            "metadata": {
+              "name": "conteudos_demonstracao",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`melhorias_cursor\\` on table \\`public.solicitacoes_melhoria\\` has not been used",
+            "metadata": {
+              "name": "solicitacoes_melhoria",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`avaliacoes_admin_cursor\\` on table \\`public.avaliacoes\\` has not been used",
+            "metadata": {
+              "name": "avaliacoes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`favoritos_owner_cursor\\` on table \\`public.favoritos\\` has not been used",
+            "metadata": {
+              "name": "favoritos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`eventos_start_cursor\\` on table \\`public.eventos\\` has not been used",
+            "metadata": {
+              "name": "eventos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`eventos_created_cursor\\` on table \\`public.eventos\\` has not been used",
+            "metadata": {
+              "name": "eventos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`historico_record_cursor\\` on table \\`public.historico_status\\` has not been used",
+            "metadata": {
+              "name": "historico_status",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`perfis_created_cursor\\` on table \\`public.perfis\\` has not been used",
+            "metadata": {
+              "name": "perfis",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`melhorias_busca_trgm\\` on table \\`public.solicitacoes_melhoria\\` has not been used",
+            "metadata": {
+              "name": "solicitacoes_melhoria",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`avaliacoes_busca_trgm\\` on table \\`public.avaliacoes\\` has not been used",
+            "metadata": {
+              "name": "avaliacoes",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`perfis_busca_trgm\\` on table \\`public.perfis\\` has not been used",
+            "metadata": {
+              "name": "perfis",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`relatos_owner_cursor\\` on table \\`public.relatos\\` has not been used",
+            "metadata": {
+              "name": "relatos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`relatos_busca_trgm\\` on table \\`public.relatos\\` has not been used",
+            "metadata": {
+              "name": "relatos",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`lugares_busca_trgm\\` on table \\`public.lugares\\` has not been used",
+            "metadata": {
+              "name": "lugares",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`lugares_nome_trgm\\` on table \\`public.lugares\\` has not been used",
+            "metadata": {
+              "name": "lugares",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          },
+          {
+            "detail": "Index \\`catalog_tiles_area\\` on table \\`private.catalog_tiles\\` has not been used",
+            "metadata": {
+              "name": "catalog_tiles",
+              "type": "table",
+              "schema": "private"
+            },
+            "observed_at": "2026-10-25T22:18:15.681Z"
+          }
+        ]
+      }
+    ]
+  }
+}

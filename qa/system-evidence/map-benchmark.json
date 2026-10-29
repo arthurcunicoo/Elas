@@ -1,0 +1,37 @@
+{
+  "environment": "Node v24.22.1; React simulated hosts; JS selection only, not Android/iOS FPS or RAM",
+  "baseline": {
+    "initialFailureCallbacks": 7,
+    "stableImageSourcesAcross100Pans": true
+  },
+  "current": {
+    "initialFailureCallbacks": 1,
+    "stableImageSourcesAcross100Pans": true
+  },
+  "markerRuns": [
+    {
+      "inputPlaces": 100,
+      "visibleMarkers": 2,
+      "medianMs": 0.3807890000000498,
+      "p95Ms": 0.9516390000001138
+    },
+    {
+      "inputPlaces": 500,
+      "visibleMarkers": 2,
+      "medianMs": 1.2894679999999425,
+      "p95Ms": 3.648864999999887
+    },
+    {
+      "inputPlaces": 1500,
+      "visibleMarkers": 2,
+      "medianMs": 2.033233999999993,
+      "p95Ms": 4.385424999999941
+    },
+    {
+      "inputPlaces": 5000,
+      "visibleMarkers": 3,
+      "medianMs": 6.0878999999999905,
+      "p95Ms": 9.711463999999978
+    }
+  ]
+}

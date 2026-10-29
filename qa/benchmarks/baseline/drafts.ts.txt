@@ -1,0 +1,148 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useRef, useState } from "react";
+import { randomUUID } from "expo-crypto";
+import { useSession } from "../auth/SessionProvider";
+const prefix = "elas:draft:v1:";
+// Serial writes prevent a delayed autosave from resurrecting a cleared draft.
+const writes = new Map<string, Promise<unknown>>();
+function serialize(key: string, job: () => Promise<unknown>) {
+  const run = (writes.get(key) ?? Promise.resolve()).catch(() => {}).then(job);
+  writes.set(key, run);
+  void run
+    .finally(() => {
+      if (writes.get(key) === run) writes.delete(key);
+    })
+    .catch(() => {});
+  return run;
+}
+export async function clearAccountDrafts(userId: string) {
+  const accountPrefix = `${prefix}${userId}:`;
+  const keys = [
+    ...new Set([...(await AsyncStorage.getAllKeys()), ...writes.keys()]),
+  ].filter((key) => key.startsWith(accountPrefix));
+  await Promise.all(
+    keys.map((key) => serialize(key, () => AsyncStorage.removeItem(key))),
+  );
+}
+export function useDraft<T extends object>(scope: string, initial: T) {
+  const { session } = useSession(),
+    key = `${prefix}${session?.user.id ?? "demo"}:${scope}`;
+  const initialRef = useRef(initial),
+    identity = useRef(key),
+    loadedKey = useRef<string | null>(null);
+  identity.current = key;
+  const [value, setValue] = useState<T>(initial),
+    [ready, setReady] = useState(false),
+    [error, setError] = useState("");
+  const attempt = useRef<{ id: string; fingerprint: string } | null>(null),
+    restored = useRef(false);
+  useEffect(() => {
+    let active = true;
+    setReady(false);
+    setValue(initialRef.current);
+    attempt.current = null;
+    restored.current = false;
+    loadedKey.current = null;
+    void AsyncStorage.getItem(key)
+      .then((raw) => {
+        if (!active) return;
+        if (raw) {
+          const saved = JSON.parse(raw);
+          if (
+            saved.version === 1 &&
+            Date.now() - saved.time < 86400000 &&
+            typeof saved.value === "object" &&
+            saved.value
+          ) {
+            const fields = initialRef.current as Record<string, unknown>;
+            if (
+              Object.entries(fields).every(([name, sample]) =>
+                Array.isArray(sample)
+                  ? Array.isArray(saved.value[name]) &&
+                    saved.value[name].every(
+                      (v: unknown) => typeof v === "string",
+                    )
+                  : typeof saved.value[name] === typeof sample,
+              )
+            ) {
+              setValue(saved.value);
+              attempt.current =
+                typeof saved.attempt?.id === "string" &&
+                typeof saved.attempt?.fingerprint === "string"
+                  ? saved.attempt
+                  : null;
+              restored.current = true;
+            }
+          }
+        }
+      })
+      .catch(() => {
+        if (active) setError("Não foi possível recuperar o rascunho local.");
+      })
+      .finally(() => {
+        if (active) {
+          loadedKey.current = key;
+          setReady(true);
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, [key]);
+  useEffect(() => {
+    if (!ready || loadedKey.current !== key) return;
+    void serialize(key, () =>
+      AsyncStorage.setItem(
+        key,
+        JSON.stringify({
+          version: 1,
+          time: Date.now(),
+          value,
+          attempt: attempt.current,
+        }),
+      ),
+    ).catch(() => {
+      if (identity.current === key)
+        setError(
+          "Rascunho não salvo neste aparelho. Mantenha a tela aberta até enviar.",
+        );
+    });
+  }, [key, ready, value]);
+  async function prepare(payload: object) {
+    const fingerprint = JSON.stringify(payload);
+    if (attempt.current?.fingerprint !== fingerprint)
+      attempt.current = { id: randomUUID(), fingerprint };
+    const id = attempt.current.id;
+    await serialize(key, () =>
+      AsyncStorage.setItem(
+        key,
+        JSON.stringify({
+          version: 1,
+          time: Date.now(),
+          value,
+          attempt: attempt.current,
+        }),
+      ),
+    );
+    return id;
+  }
+  async function clear() {
+    attempt.current = null;
+    restored.current = false;
+    setValue(initialRef.current);
+    await serialize(key, () => AsyncStorage.removeItem(key)).catch(() =>
+      setError(
+        "O envio foi salvo, mas não foi possível limpar o rascunho deste aparelho.",
+      ),
+    );
+  }
+  return {
+    value,
+    setValue,
+    ready: ready && loadedKey.current === key,
+    error,
+    prepare,
+    clear,
+    restored: restored.current,
+  };
+}

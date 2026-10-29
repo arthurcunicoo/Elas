@@ -1,0 +1,39 @@
+{
+  "baseVersion": 25,
+  "baseSha256": "edc5c6a1c41384a207fb527d89a31485d219afd8dce8bdeaf40aaee850c958ce",
+  "passed": [
+    "npm run verify",
+    "npm run typecheck",
+    "npm run lint",
+    "npm ci --ignore-scripts --no-audit --no-fund (isolated)",
+    "Expo export Android/iOS/web",
+    "Deno type check all four Edge entrypoints (local installed SDK, no config/lock/network resolution)",
+    "independent-realm storage regression: version 25 fails; current passes",
+    "QA environment inventory without CLI execution",
+    "HTTP browser fixture module routes",
+    "k6 real runner v2.3.0, five VUs, 82 local fixture requests, 0 HTTP failures",
+    "four bounded live unauthorized API probes"
+  ],
+  "blocked": [
+    {
+      "test": "real Chromium storage E2E",
+      "reason": "socket() failed: Operation not permitted before browser page initialized",
+      "assertionsExecuted": 0
+    },
+    {
+      "test": "staging Auth/Storage/deletion/load/email/deep-links",
+      "reason": "isolated project and dedicated test accounts not configured"
+    },
+    {
+      "test": "Android/iOS device and production build validation",
+      "reason": "no native SDK/device/signing setup available"
+    }
+  ],
+  "audit": {
+    "critical": 0,
+    "high": 7,
+    "moderate": 0
+  },
+  "productionModified": false,
+  "releaseCertified": false
+}

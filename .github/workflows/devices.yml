@@ -1,0 +1,66 @@
+name: ELAS — Android conectado
+on:
+  workflow_dispatch:
+    inputs:
+      serial:
+        description: Serial do Android físico autorizado no runner
+        required: true
+      device_key:
+        description: Identificador sem espaços para as evidências
+        required: true
+concurrency:
+  group: elas-device-${{ inputs.serial }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  android:
+    runs-on: [self-hosted, elas-android]
+    environment: qa
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        scale: [1, 1.3, 1.6]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Localizar app
+        id: app
+        shell: bash
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "dir=." >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=Elas" >> "$GITHUB_OUTPUT"
+          fi
+      - run: npm ci
+        working-directory: ${{ steps.app.outputs.dir }}
+      - name: Executar em aparelho instalado
+        id: device
+        run: |
+          report_dir=$(node scripts/qa/device.mjs "$DEVICE_SERIAL" "$DEVICE_KEY" "$FONT_SCALE" critical)
+          echo "report_dir=$report_dir" >> "$GITHUB_OUTPUT"
+        working-directory: ${{ steps.app.outputs.dir }}
+        env:
+          DEVICE_SERIAL: ${{ inputs.serial }}
+          DEVICE_KEY: ${{ inputs.device_key }}
+          FONT_SCALE: ${{ matrix.scale }}
+          QA_SUPABASE_URL: ${{ vars.QA_SUPABASE_URL }}
+          QA_EMAIL: ${{ secrets.QA_EMAIL }}
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
+      - name: Comparar capturas com baseline aprovada
+        run: node scripts/qa/visual.mjs "$REPORT_DIR" "$DEVICE_KEY" "$FONT_SCALE"
+        working-directory: ${{ steps.app.outputs.dir }}
+        env:
+          REPORT_DIR: ${{ steps.device.outputs.report_dir }}
+          DEVICE_KEY: ${{ inputs.device_key }}
+          FONT_SCALE: ${{ matrix.scale }}
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: android-${{ inputs.device_key }}-${{ matrix.scale }}
+          path: ${{ steps.app.outputs.dir }}/qa/evidence/
+          retention-days: 7

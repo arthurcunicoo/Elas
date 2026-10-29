@@ -1,0 +1,10 @@
+node:internal/per_context/domexception:76
+    const self = new Error();
+                 ^
+
+DOMException [OperationError]: The operation failed for an operation-specific reason
+    at new DOMException (node:internal/per_context/domexception:76:18) {
+  [cause]: [Error: Cipher job failed]
+}
+
+Node.js v24.22.1

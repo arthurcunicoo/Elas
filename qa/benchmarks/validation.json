@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-25",
+  "baseVersion": 22,
+  "checks": [
+    {
+      "command": "npm run verify",
+      "status": "passed",
+      "evidence": "verify-output.txt"
+    },
+    {
+      "command": "EXPO_NO_TELEMETRY=1 CI=1 npx expo export --platform all --output-dir /tmp/elas-modern-export-final",
+      "status": "passed",
+      "evidence": "export-output.txt"
+    },
+    {
+      "command": "node tests/map-benchmark.mjs",
+      "status": "passed",
+      "evidence": "map-results.json"
+    },
+    {
+      "command": "ELAS_BENCHMARK_OUTPUT=/tmp/elas-modern-sql-plans.json node tests/spatial-db.mjs",
+      "status": "passed",
+      "evidence": "postgres-plans.json"
+    },
+    {
+      "command": "npm audit --omit=dev --json --fetch-timeout=10000 --fetch-retries=0",
+      "status": "vulnerabilities_reported",
+      "evidence": "dependency-audit.json"
+    }
+  ],
+  "deviceEvidencePending": 22,
+  "productionChanged": false,
+  "dependencyUpdatesApplied": false,
+  "limitations": [
+    "No physical device FPS/RAM/accessibility run",
+    "No signed Android/iOS build",
+    "No production benchmark, migration or Edge deployment",
+    "Dependency metadata result polling blocked by automatic review usage limit"
+  ]
+}

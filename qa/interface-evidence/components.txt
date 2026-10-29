@@ -1,0 +1,1 @@
+Interface checks passed: loading/empty/network/server/permission/session states, safe copy, retry/clear, keyboard focus, disabled actions, reduced motion, font 160%, password geometry, filter scope and independent/global clearing. Native hosts do not prove device layout or screen-reader behavior.

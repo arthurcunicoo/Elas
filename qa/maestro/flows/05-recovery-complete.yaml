@@ -1,0 +1,37 @@
+appId: ${APP_ID}
+name: Verificar código da caixa real e trocar senha da conta QA
+---
+# Continue 04 without clearing the recovery screen. QA_OTP comes from the inbox.
+- assertVisible:
+    id: "recovery-code"
+- tapOn:
+    id: "recovery-code"
+- inputText: ${QA_OTP}
+- hideKeyboard
+- tapOn: "Verificar código"
+- extendedWaitUntil:
+    visible: "Nova senha"
+    timeout: 20000
+- tapOn: "Nova senha"
+- inputText: ${QA_NEW_PASSWORD}
+- tapOn: "Repita a senha"
+- inputText: ${QA_NEW_PASSWORD}
+- hideKeyboard
+- tapOn: "Salvar senha"
+- extendedWaitUntil:
+    visible: ".*Senha alterada.*"
+    timeout: 20000
+- tapOn: "Fazer login"
+- tapOn:
+    id: "auth-email"
+- inputText: ${QA_EMAIL}
+- tapOn:
+    id: "auth-password"
+- inputText: ${QA_NEW_PASSWORD}
+- hideKeyboard
+- tapOn:
+    id: "auth-submit"
+- extendedWaitUntil:
+    visible:
+      id: "nav-map"
+    timeout: 30000

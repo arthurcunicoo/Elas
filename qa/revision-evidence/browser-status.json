@@ -1,0 +1,9 @@
+{
+  "status": "blocked_environment",
+  "passed": false,
+  "checksExecuted": 0,
+  "reason": "Chromium process-singleton socket() failed: Operation not permitted",
+  "browser": "Google Chrome for Testing 156.0.8078.47",
+  "test": "tests/browser-storage.mjs",
+  "scope": "No browser page, IndexedDB or Web Locks assertion ran. Node regression and HTTP fixture tests are separate."
+}

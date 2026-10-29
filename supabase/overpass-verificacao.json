@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-01T18:46:18.050Z",
+  "authenticated_http": 200,
+  "total_places": 114,
+  "osm_places": 113,
+  "persistent_row_verified": true,
+  "duplicate_ids": 0,
+  "duplicate_external_refs": 0,
+  "invalid_bounds_http": 422,
+  "unauthenticated_http": 401,
+  "samples": [
+    {
+      "nome": "6° Delegacia Regional de Polícia",
+      "reference": "node/5370514390"
+    },
+    {
+      "nome": "Academia AD3",
+      "reference": "way/1417559097"
+    },
+    {
+      "nome": "Academia ao Ar Livre Alexandre Gaidzinski",
+      "reference": "way/546856465"
+    },
+    {
+      "nome": "Academia Inove",
+      "reference": "way/217461494"
+    },
+    {
+      "nome": "Admol",
+      "reference": "node/4491245347"
+    },
+    {
+      "nome": "Alcino Zanatta Ferragens",
+      "reference": "node/5564752212"
+    }
+  ],
+  "limitation": "API, database and SDK verified. Native device UI/GPS not exercised.",
+  "verification_duration_ms": 20079
+}

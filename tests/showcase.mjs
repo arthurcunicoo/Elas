@@ -1,0 +1,35 @@
+import { createTestDatabase } from '../scripts/test-database.mjs';
+import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const db = createTestDatabase();
+const migration = readFileSync(new URL('../supabase/migrations/20261015173653_app_demonstration_content.sql', import.meta.url), 'utf8');
+const seed = readFileSync(new URL('../supabase/DEMONSTRACAO.sql', import.meta.url), 'utf8');
+const A = '00000000-0000-0000-0000-000000000001', B = '00000000-0000-0000-0000-000000000002';
+const count = async () => Number((await db.query('select count(*) n from public.conteudos_demonstracao')).rows[0].n);
+const denied = async sql => { let failed = false; try { await db.exec(sql); } catch { failed = true; } assert.ok(failed,sql); };
+try {
+  await db.exec(`create role anon;create role authenticated;create role service_role bypassrls;
+    create schema auth;create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
+    grant usage on schema public,auth to anon,authenticated;grant execute on function auth.uid() to anon,authenticated;
+    create table public.lugares(id text primary key);
+    insert into public.lugares values ('nereu'),('congresso'),('osm:way:453621835'),('osm:node:9478440538'),('overture:52e7790c-14ed-4ddb-9e02-82ff0e8985f8');`);
+  await db.exec(migration); await db.exec(readFileSync(new URL('../supabase/migrations/20261028010052_presentation_content_types.sql', import.meta.url),'utf8')); await db.exec(seed); await db.exec(seed);
+  assert.equal(await count(),56,'repeat seeding must not duplicate content');
+  assert.deepEqual((await db.query('select tipo,count(*)::int n from public.conteudos_demonstracao group by tipo order by tipo')).rows,[{tipo:'avaliacao',n:30},{tipo:'enquete',n:3},{tipo:'evento',n:8},{tipo:'impacto',n:9},{tipo:'relato',n:6}]);
+  assert.equal((await db.query("select count(*)::int n from public.conteudos_demonstracao where tipo='evento' and inicia_em>now()")).rows[0].n,8);
+  assert.equal((await db.query("select count(*)::int n from public.conteudos_demonstracao where not ficticio")).rows[0].n,0);
+  assert.equal((await db.query("select count(distinct lugar_id)::int n from public.conteudos_demonstracao where tipo='avaliacao'")).rows[0].n,5);
+  assert.deepEqual((await db.query("select estado,count(*)::int n from public.conteudos_demonstracao where tipo='impacto' group by estado order by estado")).rows,[{estado:'concluida',n:3},{estado:'em_andamento',n:3},{estado:'solicitada',n:3}]);
+  await denied("update public.conteudos_demonstracao set ficticio=false");
+  await db.exec('set role anon'); await denied('select * from public.conteudos_demonstracao');
+  await db.exec(`reset role;set role authenticated;select set_config('request.jwt.claim.sub','${A}',false)`);
+  assert.equal(await count(),56);
+  await denied("insert into public.conteudos_demonstracao(id,tipo,titulo,descricao) values ('demo:fake','impacto','Falso','Não permitido')");
+  await denied("update public.conteudos_demonstracao set descricao='Alterado'");
+  await denied("delete from public.conteudos_demonstracao");
+  await db.exec(`select set_config('request.jwt.claim.sub','${B}',false)`);assert.equal(await count(),56);
+  await db.exec("select set_config('request.jwt.claim.sub','',false)");assert.equal(await count(),0);
+  await db.exec("reset role;update public.conteudos_demonstracao set ativo=false where id='demo:evento:1'");
+  await db.exec(`set role authenticated;select set_config('request.jwt.claim.sub','${A}',false)`);assert.equal(await count(),55);
+  console.log('Showcase DB checks passed: 56 explicit samples, idempotence, future fictional agenda, 5 review destinations, balanced impact stages, auth-only reads, hidden rows and blocked client writes.');
+} finally {await db.close();}

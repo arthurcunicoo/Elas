@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-27",
+  "timeZone": "America/Sao_Paulo",
+  "baseVersion": 2,
+  "baseSha256": "3f511692a62251297c8685a6848bfa63ab0582922300ea0d49e0ae34daa23553",
+  "admin": {
+    "email": "teste.elas@example.com",
+    "soleAdministrator": true,
+    "totalAuthAccounts": 3,
+    "ordinaryAccounts": 2,
+    "rolesChanged": false,
+    "passwordChanged": false,
+    "authAccountsCreated": 0,
+    "emailFromAudioNotConfirmed": true
+  },
+  "database": {
+    "presentationMigration": "20261028010052",
+    "appliedMigrations": 21,
+    "packagedMigrations": 26,
+    "backendVersion": 11,
+    "content": [
+      {
+        "tipo": "avaliacao",
+        "total": 30,
+        "last_date": null,
+        "first_date": null,
+        "future_events": 0
+      },
+      {
+        "tipo": "enquete",
+        "total": 3,
+        "last_date": "2026-11-08T23:00:00+00:00",
+        "first_date": "2026-10-26T23:00:00+00:00",
+        "future_events": 0
+      },
+      {
+        "tipo": "evento",
+        "total": 8,
+        "last_date": "2026-11-15T18:30:00+00:00",
+        "first_date": "2026-10-29T12:00:00+00:00",
+        "future_events": 8
+      },
+      {
+        "tipo": "impacto",
+        "total": 9,
+        "last_date": null,
+        "first_date": null,
+        "future_events": 0
+      },
+      {
+        "tipo": "relato",
+        "total": 6,
+        "last_date": null,
+        "first_date": null,
+        "future_events": 0
+      }
+    ],
+    "realCounts": {
+      "polls": 0,
+      "events": 0,
+      "reports": 3,
+      "reviews": 2,
+      "improvements": 0
+    },
+    "realCountsUnchanged": true
+  },
+  "permissions": {
+    "ordinaryAccountsTested": 2,
+    "administrativeSummaryDenied": true,
+    "adminSummaryAndQueueAllowed": true,
+    "anonymousDemoReadsDenied": true,
+    "method": "PostgreSQL role/claim assertions in transactions followed by rollback; not password login or device E2E"
+  },
+  "tests": {
+    "fullSuite": "passed",
+    "webPresentationExport": "passed",
+    "lintErrors": 0,
+    "preExistingLintWarnings": 3
+  },
+  "limitations": [
+    "Requested email in audio was ambiguous; existing sole administrator retained.",
+    "No new Auth account/password was created.",
+    "Previous five backend rollout migrations remain pending.",
+    "No signed native build, physical device or real-password login test was executed."
+  ]
+}

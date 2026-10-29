@@ -1,0 +1,645 @@
+{
+  "version": 1,
+  "date": "2026-10-22",
+  "sourceLibraryVersion": 20,
+  "backendVersion": 11,
+  "migrations": 20,
+  "releaseApproved": false,
+  "scope": "Código, testes locais e leitura do Supabase conectado; sem execução física.",
+  "counts": {
+    "Verificado": 43,
+    "Parcial": 14,
+    "Adiado": 1,
+    "Pendente": 5
+  },
+  "items": [
+    {
+      "id": 1,
+      "status": "Verificado",
+      "title": "Paleta central",
+      "finding": "Tokens centralizados; cores de conquistas também corrigidas nesta revisão.",
+      "evidence": [
+        "constants/theme.ts",
+        "features/community/progress.ts"
+      ]
+    },
+    {
+      "id": 2,
+      "status": "Verificado",
+      "title": "Raios",
+      "finding": "Escala 8/12/20/pill; exceções geométricas de pins/ilustrações permanecem.",
+      "evidence": [
+        "constants/theme.ts",
+        "components/shared/Buttons.tsx"
+      ]
+    },
+    {
+      "id": 3,
+      "status": "Parcial",
+      "title": "Linguagem dos cards",
+      "finding": "Base compartilhada presente; sombras e densidades ainda variam em cards específicos.",
+      "evidence": [
+        "constants/theme.ts",
+        "components/impacts/ImpactStatCard.tsx"
+      ]
+    },
+    {
+      "id": 4,
+      "status": "Verificado",
+      "title": "Textos de 10/11",
+      "finding": "Nenhum fontSize 10/11 em telas/componentes/features; escala mínima centralizada.",
+      "evidence": [
+        "constants/theme.ts",
+        "tests/app-flows.mjs"
+      ]
+    },
+    {
+      "id": 5,
+      "status": "Verificado",
+      "title": "Largura das páginas",
+      "finding": "pageContent unifica telas; painéis do mapa têm largura própria intencional.",
+      "evidence": [
+        "components/shared/FeaturePage.tsx",
+        "components/map/PlaceCard.tsx"
+      ]
+    },
+    {
+      "id": 6,
+      "status": "Verificado",
+      "title": "Headers",
+      "finding": "PageHeader compartilhado; barra do mapa é uma composição específica.",
+      "evidence": [
+        "components/shared/PageHeader.tsx",
+        "features/map/MapScreen.tsx"
+      ]
+    },
+    {
+      "id": 7,
+      "status": "Verificado",
+      "title": "Botões",
+      "finding": "Variantes e TouchFeedback comuns; wrappers de conta usam a mesma base.",
+      "evidence": [
+        "components/shared/Buttons.tsx",
+        "components/AccountForm.tsx"
+      ]
+    },
+    {
+      "id": 8,
+      "status": "Verificado",
+      "title": "Formulários",
+      "finding": "Field compartilhado com foco, erro, desabilitado e sucesso; ícones não escalam como texto.",
+      "evidence": [
+        "components/shared/FormControls.tsx",
+        "components/InputField.tsx"
+      ]
+    },
+    {
+      "id": 9,
+      "status": "Verificado",
+      "title": "Função do botão central",
+      "finding": "Participar segue a decisão posterior do usuário e abre as duas ações distintas.",
+      "evidence": [
+        "components/BottomNavigation.tsx",
+        "components/ParticipationSheet.tsx"
+      ]
+    },
+    {
+      "id": 10,
+      "status": "Verificado",
+      "title": "Nome das enquetes",
+      "finding": "Enquetes na área pública e no admin; mensagens antigas do banco são traduzidas no cliente.",
+      "evidence": [
+        "app/eventos.tsx",
+        "lib/errors.ts"
+      ]
+    },
+    {
+      "id": 11,
+      "status": "Verificado",
+      "title": "Resultados antes do voto",
+      "finding": "SQL e UI restringem resultados até voto ou encerramento no servidor.",
+      "evidence": [
+        "supabase/migrations/20261020133648_community_scopes_poll_visibility.sql",
+        "tests/community-db.mjs"
+      ]
+    },
+    {
+      "id": 12,
+      "status": "Verificado",
+      "title": "Copy dos votos",
+      "finding": "Porcentagem usa dos votos.",
+      "evidence": [
+        "components/events/PollCard.tsx",
+        "tests/production-flows.mjs"
+      ]
+    },
+    {
+      "id": 13,
+      "status": "Verificado",
+      "title": "Alertas x relatos",
+      "finding": "Navegação/título públicos usam Relatos; rota antiga alertas permanece compatível.",
+      "evidence": [
+        "app/alertas.tsx",
+        "components/BottomNavigation.tsx"
+      ]
+    },
+    {
+      "id": 14,
+      "status": "Verificado",
+      "title": "Hierarquia do relato",
+      "finding": "Destaque identificado como Relato mais recente, sem inventar ranking de gravidade.",
+      "evidence": [
+        "components/alerts/AlertCards.tsx",
+        "services/reports.ts"
+      ]
+    },
+    {
+      "id": 15,
+      "status": "Verificado",
+      "title": "Relato próprio pendente",
+      "finding": "Indicação de autoria e verificação nas telas próprias; feed público não apresenta pendências como publicadas.",
+      "evidence": [
+        "app/registro.tsx",
+        "features/reports/OwnRecordsScreen.tsx"
+      ]
+    },
+    {
+      "id": 16,
+      "status": "Verificado",
+      "title": "Inbox canônica",
+      "finding": "Perfil e Relatos abrem a mesma rota de notificações.",
+      "evidence": [
+        "app/perfil.tsx",
+        "app/alertas.tsx"
+      ]
+    },
+    {
+      "id": 17,
+      "status": "Verificado",
+      "title": "Escopo das contagens de Impactos",
+      "finding": "Números pessoais separados do painel público da cidade.",
+      "evidence": [
+        "services/improvements.ts",
+        "tests/community-db.mjs"
+      ]
+    },
+    {
+      "id": 18,
+      "status": "Verificado",
+      "title": "Escopo da lista de Impactos",
+      "finding": "Seções e identificação própria diferenciam pedidos pessoais e melhorias públicas.",
+      "evidence": [
+        "app/impactos.tsx",
+        "components/impacts/ImprovementCard.tsx"
+      ]
+    },
+    {
+      "id": 19,
+      "status": "Verificado",
+      "title": "Cores de status",
+      "finding": "impactStatus usa statusText/palette como fonte única.",
+      "evidence": [
+        "constants/impactStatus.ts",
+        "components/impacts/ImpactStatCard.tsx"
+      ]
+    },
+    {
+      "id": 20,
+      "status": "Verificado",
+      "title": "Participar e sheet",
+      "finding": "Círculo de 56 por 56, duas opções com ícones/copy e transição com redução de movimento.",
+      "evidence": [
+        "components/ParticipationSheet.tsx",
+        "hooks/useSheetTransition.ts"
+      ]
+    },
+    {
+      "id": 21,
+      "status": "Verificado",
+      "title": "Impactos dentro de Mapa",
+      "finding": "Relação explicitada por Mapa › Impactos e ação de voltar ao mapa.",
+      "evidence": [
+        "app/impactos.tsx",
+        "app/_layout.tsx"
+      ]
+    },
+    {
+      "id": 22,
+      "status": "Verificado",
+      "title": "addLabel",
+      "finding": "Label visível usa a propriedade e mantém acessibilidade própria.",
+      "evidence": [
+        "components/BottomNavigation.tsx",
+        "tests/production-flows.mjs"
+      ]
+    },
+    {
+      "id": 23,
+      "status": "Verificado",
+      "title": "Confirmação genérica",
+      "finding": "Default Confirmar; logout fornece seu texto explicitamente.",
+      "evidence": [
+        "components/ProfileDialog.tsx",
+        "app/perfil.tsx"
+      ]
+    },
+    {
+      "id": 24,
+      "status": "Verificado",
+      "title": "APIs mortas",
+      "finding": "useAppData removido; providers compostos ainda usados. SQL legado preservado para clientes antigos; smoke atualizado para RPCs atuais.",
+      "evidence": [
+        "providers/AppData.tsx",
+        "scripts/verificar-mvp.mjs"
+      ]
+    },
+    {
+      "id": 25,
+      "status": "Parcial",
+      "title": "Arquivos grandes",
+      "finding": "Mapa e PlaceCard foram divididos; relato, avaliação, eventos, melhoria e admin ainda concentram muita lógica.",
+      "evidence": [
+        "features/map/MapScreen.tsx",
+        "components/impacts/ImprovementRequest.tsx"
+      ]
+    },
+    {
+      "id": 26,
+      "status": "Verificado",
+      "title": "PlaceCard",
+      "finding": "154 linhas com header/media/actions/sources/motion separados.",
+      "evidence": [
+        "components/map/PlaceCard.tsx",
+        "components/map/PlaceHeader.tsx"
+      ]
+    },
+    {
+      "id": 27,
+      "status": "Verificado",
+      "title": "Distância no card",
+      "finding": "Um cálculo memoizado por coordenadas/localização.",
+      "evidence": [
+        "components/map/PlaceCard.tsx"
+      ]
+    },
+    {
+      "id": 28,
+      "status": "Parcial",
+      "title": "Camada de acesso",
+      "finding": "Providers não fazem consultas diretas; ainda há helpers de acesso distribuídos em features além de services.",
+      "evidence": [
+        "features/map/CatalogProvider.tsx",
+        "features/community/community.ts"
+      ]
+    },
+    {
+      "id": 29,
+      "status": "Verificado",
+      "title": "Carga antecipada",
+      "finding": "Catálogo regional e fatores são carregados quando usados; não no login global.",
+      "evidence": [
+        "features/map/CatalogProvider.tsx",
+        "tests/architecture-flows.mjs"
+      ]
+    },
+    {
+      "id": 30,
+      "status": "Verificado",
+      "title": "Paginação",
+      "finding": "Frontend ativo usa cursor; RPCs de OFFSET antigos seguem só por compatibilidade. Smoke corrigido para o caminho atual.",
+      "evidence": [
+        "services/pagination.ts",
+        "tests/cursor-db.mjs"
+      ]
+    },
+    {
+      "id": 31,
+      "status": "Verificado",
+      "title": "Busca de lugares",
+      "finding": "Normalização, pg_trgm/GIN e busca por similaridade no SQL.",
+      "evidence": [
+        "supabase/migrations/20261020142143_spatial_search_service_areas.sql",
+        "tests/spatial-db.mjs"
+      ]
+    },
+    {
+      "id": 32,
+      "status": "Verificado",
+      "title": "Busca administrativa",
+      "finding": "Índices/consultas normalizadas e autorização por tipo de fila.",
+      "evidence": [
+        "supabase/migrations/20261020142143_spatial_search_service_areas.sql",
+        "features/admin/admin.ts"
+      ]
+    },
+    {
+      "id": 33,
+      "status": "Verificado",
+      "title": "Geografia de relatos",
+      "finding": "Coluna geográfica, índice GiST e consulta espacial no servidor.",
+      "evidence": [
+        "supabase/migrations/20261020142143_spatial_search_service_areas.sql",
+        "tests/spatial-db.mjs"
+      ]
+    },
+    {
+      "id": 34,
+      "status": "Verificado",
+      "title": "Corte de 100 relatos",
+      "finding": "Agregação contabiliza região completa; drill-down paginado de grupos não perde registros por esse limite.",
+      "evidence": [
+        "services/reports.ts",
+        "tests/spatial-db.mjs"
+      ]
+    },
+    {
+      "id": 35,
+      "status": "Verificado",
+      "title": "Clusters de relatos",
+      "finding": "Agregação no servidor e expansão/lista por grupo.",
+      "evidence": [
+        "features/map/reportClusters.ts",
+        "tests/spatial-ui.mjs"
+      ]
+    },
+    {
+      "id": 36,
+      "status": "Verificado",
+      "title": "Semântica dos markers",
+      "finding": "ReportMarker comum no mapa web e nativo.",
+      "evidence": [
+        "components/map/ReportMarker.tsx",
+        "components/map/CityMap.native.tsx"
+      ]
+    },
+    {
+      "id": 37,
+      "status": "Verificado",
+      "title": "Cache espacial",
+      "finding": "Viewport/chave quantizados juntos, com margem para preservar bordas.",
+      "evidence": [
+        "features/map/region.ts",
+        "tests/request-cancellation.mjs"
+      ]
+    },
+    {
+      "id": 38,
+      "status": "Verificado",
+      "title": "Seleção no banco",
+      "finding": "SQL ranqueia e retorna até 500 lugares; frontend reduz a apresentação pelo zoom.",
+      "evidence": [
+        "services/places.ts",
+        "tests/spatial-db.mjs"
+      ]
+    },
+    {
+      "id": 39,
+      "status": "Parcial",
+      "title": "Importação em background",
+      "finding": "App lê o banco. Job existe, mas seis respostas 503 na última hora vieram de HTTP 406 da fonte; nenhuma importação bem-sucedida registrada.",
+      "evidence": [
+        "supabase/functions/catalog-refresh/worker.ts",
+        "supabase/functions/lugares-osm/network.js"
+      ]
+    },
+    {
+      "id": 40,
+      "status": "Parcial",
+      "title": "Múltiplas cidades",
+      "finding": "service_areas e troca de cidade funcionam; piloto só em Criciúma, datas/heurísticas ainda têm referências locais.",
+      "evidence": [
+        "services/serviceAreas.ts",
+        "features/community/dates.ts"
+      ]
+    },
+    {
+      "id": 41,
+      "status": "Parcial",
+      "title": "Tiles web",
+      "finding": "Provedor configurável e gate existem; ambiente atual continua no modo piloto OSM.",
+      "evidence": [
+        "features/map/web/tileProvider.ts",
+        "scripts/qa/release-check.mjs"
+      ]
+    },
+    {
+      "id": 42,
+      "status": "Verificado",
+      "title": "Política comunitária",
+      "finding": "Regras/metadados vêm do backend e são validados no cliente; 8 avaliações/90 dias cobertos em teste.",
+      "evidence": [
+        "supabase/migrations/20261022133600_review_policy_metadata.sql",
+        "tests/community-db.mjs"
+      ]
+    },
+    {
+      "id": 43,
+      "status": "Verificado",
+      "title": "Percepção não é verdade objetiva",
+      "finding": "UI comunica percepções, mínimo e distribuição; não rotula o lugar como perigoso automaticamente.",
+      "evidence": [
+        "constants/community.ts",
+        "components/map/CommunityReviewSummary.tsx"
+      ]
+    },
+    {
+      "id": 44,
+      "status": "Verificado",
+      "title": "Eventos em uma viagem",
+      "finding": "pagina_app inclui inscrito; frontend não faz segunda busca de inscrições por página.",
+      "evidence": [
+        "features/community/community.ts",
+        "tests/request-cancellation.mjs"
+      ]
+    },
+    {
+      "id": 45,
+      "status": "Verificado",
+      "title": "RPC de Impactos",
+      "finding": "Painel com escopos pessoais/públicos usa uma viagem; API anterior mantida para compatibilidade.",
+      "evidence": [
+        "services/improvements.ts",
+        "tests/community-db.mjs"
+      ]
+    },
+    {
+      "id": 46,
+      "status": "Adiado",
+      "title": "Resumo materializado",
+      "finding": "Agregação atual mantida conforme pedido; materialização depende de carga real futura.",
+      "evidence": [
+        "supabase/migrations/20261022134052_compact_review_policy_payload.sql"
+      ]
+    },
+    {
+      "id": 47,
+      "status": "Parcial",
+      "title": "Cancelamento",
+      "finding": "Mapa/busca/detalhe/resumo cancelam no fetch; Request.signal e Auth temporário corrigidos. Algumas listas ainda só ignoram respostas fora de foco.",
+      "evidence": [
+        "lib/request.ts",
+        "features/profile/usePagedList.ts"
+      ]
+    },
+    {
+      "id": 48,
+      "status": "Verificado",
+      "title": "Tamanho dos assets",
+      "finding": "Quatro JPEGs com largura 800 px e cerca de 68–100 KB; sem alteração de identidade nesta revisão.",
+      "evidence": [
+        "docs/design/ASSETS.md",
+        "assets/places/nereu.jpg"
+      ]
+    },
+    {
+      "id": 49,
+      "status": "Verificado",
+      "title": "Referências de design",
+      "finding": "PNGs de referência ficam em docs/design, separados dos assets de execução.",
+      "evidence": [
+        "docs/design/ASSETS.md",
+        "docs/design/reference-cadastro.png"
+      ]
+    },
+    {
+      "id": 50,
+      "status": "Parcial",
+      "title": "Engine web",
+      "finding": "362 linhas mais módulos de geometria/drag/tiles e testes; mantém engine própria, sem biblioteca especializada.",
+      "evidence": [
+        "components/map/CityMap.tsx",
+        "tests/web-map.mjs"
+      ]
+    },
+    {
+      "id": 51,
+      "status": "Verificado",
+      "title": "Suíte e CI",
+      "finding": "Suíte completa local passou; workflow existe. Nenhuma execução remota de CI foi alegada.",
+      "evidence": [
+        "package.json",
+        ".github/workflows/verify.yml"
+      ]
+    },
+    {
+      "id": 52,
+      "status": "Pendente",
+      "title": "E2E físico",
+      "finding": "Fluxos preparados, iOS corrigido para validar build/backend real. Nenhum aparelho conectado nesta revisão.",
+      "evidence": [
+        "qa/maestro/flows/01-critical.yaml",
+        "scripts/qa/ios-device.mjs"
+      ]
+    },
+    {
+      "id": 53,
+      "status": "Parcial",
+      "title": "Regressão visual",
+      "finding": "Diff/baseline/CI preparados; metadados/OS reforçados. Nenhuma baseline física aprovada.",
+      "evidence": [
+        "scripts/qa/visual.mjs",
+        "qa/visual/baselines/README.md"
+      ]
+    },
+    {
+      "id": 54,
+      "status": "Parcial",
+      "title": "Dynamic Type real",
+      "finding": "Controles adaptam fonte; verificações 130/160 por aparelho ainda não executadas.",
+      "evidence": [
+        "components/shared/FormControls.tsx",
+        "docs/qa/MATRIZ-APARELHOS.md"
+      ]
+    },
+    {
+      "id": 55,
+      "status": "Parcial",
+      "title": "Observabilidade de produção",
+      "finding": "Logs Edge confirmados; Sentry sem DSN/recebimento real e alertas externos não configurados.",
+      "evidence": [
+        "lib/monitoring/index.ts",
+        "qa/monitoring-queries.sql"
+      ]
+    },
+    {
+      "id": 56,
+      "status": "Pendente",
+      "title": "Carga no Supabase",
+      "finding": "k6 preparado e protocolo local testado; não há execução de 500 usuários no staging.",
+      "evidence": [
+        "qa/load/read-flows.js",
+        "docs/qa/CARGA.md"
+      ]
+    },
+    {
+      "id": 57,
+      "status": "Pendente",
+      "title": "FPS/RAM de Android médio",
+      "finding": "Coletor/procedimento presentes; sem medições físicas.",
+      "evidence": [
+        "scripts/qa/perf-android.mjs",
+        "docs/qa/MATRIZ-APARELHOS.md"
+      ]
+    },
+    {
+      "id": 58,
+      "status": "Pendente",
+      "title": "Build de produção instalada",
+      "finding": "Exports e prebuild anterior passam; faltam assinatura/instalação, chaves/configuração e ícone final de distribuição.",
+      "evidence": [
+        "eas.json",
+        "docs/qa/BUILD-E-OBSERVABILIDADE.md"
+      ]
+    },
+    {
+      "id": 59,
+      "status": "Pendente",
+      "title": "Recuperação real de conta",
+      "finding": "Fluxo por código isolado e HTTP com timeout; e-mail/SMTP e login final em produção não testados.",
+      "evidence": [
+        "services/account.ts",
+        "docs/qa/MATRIZ-APARELHOS.md"
+      ]
+    },
+    {
+      "id": 60,
+      "status": "Parcial",
+      "title": "Backup/restauração real",
+      "finding": "Scripts e exercício local com 20 migrações passam; restauração gerenciada remota continua pendente.",
+      "evidence": [
+        "scripts/operations/backups.mjs",
+        "tests/restore-drill.mjs"
+      ]
+    },
+    {
+      "id": 61,
+      "status": "Verificado",
+      "title": "Retenção da idempotência",
+      "finding": "30 dias, hold justificado, lotes, fingerprint e cron ativo; primeira execução automática bem-sucedida observada com tabela vazia.",
+      "evidence": [
+        "supabase/migrations/20261022163527_operational_retention_and_moderation.sql",
+        "tests/operational-growth.mjs"
+      ]
+    },
+    {
+      "id": 62,
+      "status": "Parcial",
+      "title": "Operação administrativa",
+      "finding": "Fila/revisões/histórico/permissões presentes; lotes, atribuição e gestão auditada de papéis ainda no backlog.",
+      "evidence": [
+        "features/admin/AdminScreen.tsx",
+        "docs/operations/PAINEL-ADMIN.md"
+      ]
+    },
+    {
+      "id": 63,
+      "status": "Parcial",
+      "title": "Push real",
+      "finding": "Cliente/outbox/worker prontos; envios desativados, sem cron de entrega/credenciais e sem recebimento físico.",
+      "evidence": [
+        "services/push.ts",
+        "docs/operations/PUSH.md"
+      ]
+    }
+  ]
+}

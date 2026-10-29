@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "appVersion": "1.1.0",
+  "requirements": [
+    {
+      "id": "android-small",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "android-mid",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "iphone-notch",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "font-130",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "font-160",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "keyboard",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "location-denied",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "gps-disabled",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "network-slow",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "network-drop",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "background-return",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "persisted-login",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "recovery-email-login",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "avatar-upload",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "many-pins",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "visual-baselines",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "crash-received",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "edge-observability",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "load-staging",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "android-production",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "ios-production",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    },
+    {
+      "id": "backup-restore",
+      "status": "pending",
+      "artifact": null,
+      "executedAt": null,
+      "reviewer": null
+    }
+  ]
+}

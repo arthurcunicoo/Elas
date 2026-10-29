@@ -1,0 +1,11 @@
+node_modules/
+.expo/
+dist*/
+.env
+.env.*
+!.env.example
+qa/evidence/
+qa/visual/baselines/
+*.zip
+*.log
+supabase/.temp/

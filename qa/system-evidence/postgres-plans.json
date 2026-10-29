@@ -1,0 +1,139 @@
+{
+  "environment": "PGlite isolated fixture; not production; table queries as database owner",
+  "plans": {
+    "placeSearch": [
+      {
+        "QUERY PLAN": [
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "lugares",
+              "Alias": "lugares",
+              "Startup Cost": 327.78,
+              "Total Cost": 332.04,
+              "Plan Rows": 1,
+              "Plan Width": 10,
+              "Actual Startup Time": 8.074,
+              "Actual Total Time": 8.08,
+              "Actual Rows": 1,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Recheck Cond": "(private.normalizar_busca(((nome || ' '::text) || endereco)) ~~ '%aurora%'::text)",
+              "Rows Removed by Index Recheck": 0,
+              "Exact Heap Blocks": 1,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 78,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "lugares_busca_trgm",
+                  "Startup Cost": 0,
+                  "Total Cost": 327.78,
+                  "Plan Rows": 1,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 7.791,
+                  "Actual Total Time": 7.792,
+                  "Actual Rows": 1,
+                  "Actual Loops": 1,
+                  "Disabled": false,
+                  "Index Cond": "(private.normalizar_busca(((nome || ' '::text) || endereco)) ~~ '%aurora%'::text)",
+                  "Index Searches": 1,
+                  "Shared Hit Blocks": 77,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 74,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.256,
+            "Triggers": [],
+            "Execution Time": 8.803
+          }
+        ]
+      }
+    ],
+    "reportBounds": [
+      {
+        "QUERY PLAN": [
+          {
+            "Plan": {
+              "Node Type": "Seq Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "relatos",
+              "Alias": "relatos",
+              "Startup Cost": 0,
+              "Total Cost": 32.42,
+              "Plan Rows": 834,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.136,
+              "Actual Total Time": 2.454,
+              "Actual Rows": 833,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Filter": "(localizacao OPERATOR(gis.&&) '0103000020E610000001000000050000003333333333B348C03333333333B33CC03333333333B348C0295C8FC2F5A83CC0EC51B81E85AB48C0295C8FC2F5A83CC0EC51B81E85AB48C03333333333B33CC03333333333B348C03333333333B33CC0'::gis.geography)",
+              "Rows Removed by Filter": 1,
+              "Shared Hit Blocks": 22,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning": {
+              "Shared Hit Blocks": 68,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.527,
+            "Triggers": [],
+            "Execution Time": 4.117
+          }
+        ]
+      }
+    ]
+  }
+}

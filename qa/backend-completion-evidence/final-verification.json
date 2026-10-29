@@ -1,0 +1,6 @@
+{
+  "command": "npm run verify",
+  "exitCode": 0,
+  "seconds": 119.39,
+  "log": "final-verify.log"
+}

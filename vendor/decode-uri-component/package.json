@@ -1,0 +1,8 @@
+{
+  "name": "decode-uri-component",
+  "version": "0.5.1-elas.1",
+  "private": true,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "license": "MIT"
+}
